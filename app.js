@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+// app.use('/users', users);
 //use passport to auth useer 
 //after user clicks sumbit to authenticate create post request
 ///excersise/create should to point to slash create 

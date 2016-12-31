@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>User-Page</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%=excersiseName %></h1>
-    <p>This is the <%= excersiseName %></p>
+    <img src="http://localhost:3000/images/userimage.png" alt="user image for user homepage" class="user-page-userimage">
+    <p class="user-page-welcome-message username">Welcome <%= name %></p>
+    <p class="user-page-welcome-message">This is your homescreen dashboard from here you can do several things such as</p>
+    <ul>
+     <li class="user-page-list-options">lorem ipsum lorem ipsum and some more</li>
+     <li class="user-page-list-options">lorem ipsum lorem ipsum and some more</li>
+     <li class="user-page-list-options">lorem ipsum lorem ipsum and some more</li>
+    </ul> 
   </body>
 </html>

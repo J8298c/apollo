@@ -1,8 +1,37 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #5F5F5F;
+  display: block;
 }
 
 a {
   color: #00B7FF;
+}
+/*user page styling*/
+.user-page-welcome-message {
+  color: #4CAF50;
+  text-align: center;
+}
+.username {
+  font-size: 33px;
+}
+.user-page-list-options{
+  list-style: none;
+  text-align: center;
+  color:#4CAF50;
+  margin-bottom: 20px;
+}
+.user-page-userimage {
+  display: block;
+  margin: 0 auto;
+  border: 4px solid #4CAF50;
+  border-radius: 50%;
+}
+.workout-graph {
+  width: 400px;
+  height: 250px;
+  display: block;
+  margin: 0 auto;
+  border: 4px solid #4CAF50;
 }
