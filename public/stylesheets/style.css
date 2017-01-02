@@ -35,3 +35,9 @@ a {
   margin: 0 auto;
   border: 4px solid #4CAF50;
 }
+/*excersise/all styling*/
+.excer-all {
+  display: block;
+  float: left;
+  width: 30%;
+}

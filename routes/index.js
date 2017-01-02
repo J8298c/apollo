@@ -15,14 +15,24 @@ router.get('/users', function (req, res, next) {
 
 router.get('/exercises', function (req, res, next) {
     res.render('exercises', {
-        title: 'Apollo - Exercises'
+        name: 'Bench-Press',
+        equipment: 'Barbbell',
+        bodyParts: ['Chest','Triceps']
+        //need to get excersise info from database query perhaps 
+        //and parse through it to set up for loop in ejs file        
     });
 });
-
-router.get('/exercises/new', function (req, res, next) {
-    res.render('new_exercise', {
-        title: 'Apollo - New Exercise'
-    });
-});
+router.get('/exercises/all', function(req, res, next){
+    res.render('excerall', {
+        name: 'ipsum lorem',
+        equipment: 'ipsum lorerm',
+        bodyParts: ['ipsum', 'lorem']
+    })
+})
+// router.get('/exercises/new', function (req, res, next) {
+//     res.render('new_exercise', {
+        
+//     });
+// });
 
 module.exports = router;

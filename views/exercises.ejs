@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title><%=name %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <p>Get Ready for this New Year by trying out <span>Apollo</span>
+  <img src="http://localhost:3000/images/userimage.png" alt="user image for user homepage" class="excersise-image">
+  <h1 class="excersise-name"><%=name %></h1>
+    <!--set up divs to contain images of workout along with description and name of workout 
+    insert for loop to go through workout obj--> 
+    <ul>
+    <% for(var i = 0; i < bodyParts.length; i++){ %>
+      <li><%=bodyParts[i] %></li>
+    <%} %>
+    </ul>
+    <p class="equipment"><%=equipment %></p>
   </body>
 </html>
 <!--one to display each indvidual excersise, form to let people--> 
