@@ -8,20 +8,19 @@ router.get('/', function (req, res, next) {
 
 /* GET users. */
 router.get('/users', function (req, res, next) {
-    res.render('users', {
-        name: 'Arnold'
+    res.render('users/index', {
     });
+});
+//colon username is a placeholder
+router.get('/users/:username', function (req, res, next){
+    console.log('The user is', req.params.username);
+    res.render('users/show', {username: req.params.username});
+})
+
+router.get('/excercises/:excercisename', function (req, res, next) {
+    res.render('excercises/show', {excercisename: req.params.excercisename, bodyParts: [], equipment: 'barbell'});
 });
 
-router.get('/exercises', function (req, res, next) {
-    res.render('exercises', {
-        name: 'Bench-Press',
-        equipment: 'Barbbell',
-        bodyParts: ['Chest','Triceps']
-        //need to get excersise info from database query perhaps 
-        //and parse through it to set up for loop in ejs file        
-    });
-});
 router.get('/exercises/all', function(req, res, next){
     res.render('excerall', {
         name: 'ipsum lorem',

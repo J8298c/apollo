@@ -25,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//put all my routes in app look at index example
 app.use('/', index);
 // app.use('/users', users);
 //use passport to auth useer 
