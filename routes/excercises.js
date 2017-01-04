@@ -8,6 +8,9 @@ router.get('/excercises/:excercisename', function (req, res, next) {
 router.get('/excercises', function(req, res, next){
     res.render('excercises/index', {
     });
-})
+});
+router.post('/excercises/new', function (req, res){
+
+});
 
 module.exports = router;
