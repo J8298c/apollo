@@ -15,8 +15,6 @@ const apolloSchema = new mongoose.Schema({
 
 const Excersise = mongoose.Model('Excersise', apolloSchema);
 
-module.exports = {Model};
-
 mongoose.connect('mongodb://localhost/3000');
 
 Excersise.findOne(function(error, result){
@@ -25,4 +23,5 @@ Excersise.findOne(function(error, result){
     }
 });
 
+module.exports = {Model};
 

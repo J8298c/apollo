@@ -35,6 +35,25 @@ a {
   margin: 0 auto;
   border: 4px solid #4CAF50;
 }
+/*excersise indivual page */
+.excersise-image {
+  display: block;
+  margin: 0 auto;
+}
+.excersise-name {
+  text-align: center;
+}
+.indvidual-gym-text {
+  margin: 0 auto;
+  display: block;
+}
+.indvidual-gym-text li {
+  list-style: none;
+  text-align: center;
+}
+.equipment {
+  text-align: center;
+}
 /*excersise/all styling*/
 .excer-all {
   display: block;
