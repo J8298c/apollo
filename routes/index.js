@@ -21,17 +21,14 @@ router.get('/excercises/:excercisename', function (req, res, next) {
     res.render('excercises/show', {excercisename: req.params.excercisename, bodyParts: [], equipment: 'barbell'});
 });
 
-router.get('/exercises/all', function(req, res, next){
-    res.render('excerall', {
-        name: 'ipsum lorem',
-        equipment: 'ipsum lorerm',
-        bodyParts: ['ipsum', 'lorem']
-    })
+router.get('/excercises', function(req, res, next){
+    res.render('excercises/index', {
+    });
 })
-// router.get('/exercises/new', function (req, res, next) {
-//     res.render('new_exercise', {
+router.get('/exercises/new', function (req, res, next) {
+    res.render('new_exercise', {
         
-//     });
-// });
+    });
+});
 
 module.exports = router;
