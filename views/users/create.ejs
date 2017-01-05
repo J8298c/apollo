@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>New User</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  <!--will be sent as req.body-->
+    <form action="/users/create" method="POST">
+    <input type="text" placeholder="username" name="name">
+    <input type="text" placeholder="email" name="email">
+    <input type="text" palceholer="Create Password" name="password">
+    <button type="submit" class="submitbtn">button</button>
+    </form>
+  </body>
+</html>

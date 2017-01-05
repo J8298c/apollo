@@ -7,8 +7,7 @@ const bodyParser = require('body-parser');
 //routes for app
 const index = require('./routes/index');
 const users = require('./routes/users');
-const excercises = require('./routes/excercises');
-
+const workout = require('./routes/workout');
 
 const app = express();
 
@@ -29,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //put all my routes in app look at index example
 app.use('/', index);
 app.use('/users', users);
-app.use('/excercises', excercises);
+app.use('/workout', workout);
 
 // app.use('/users', users);
 //use passport to auth useer 
