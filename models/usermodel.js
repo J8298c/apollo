@@ -17,8 +17,7 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
-//need to connect to a new collection for Users 
-//within local DB
-// mongoose.connect('mongodb://localhost/apollo');
+mongoose.createConnection('mongodb://localhost/apollo');
+
 
 module.exports = {User};

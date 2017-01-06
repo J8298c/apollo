@@ -16,11 +16,11 @@ const apolloSchema = new mongoose.Schema({
         required: true,
         default: new Date()
     }
-});
+});  
 
 const Workout = mongoose.model('Workout', apolloSchema);
 
-mongoose.connect('mongodb://localhost/apollo');
+mongoose.createConnection('mongodb://localhost/apollo');
 
 module.exports = {Workout};
 
