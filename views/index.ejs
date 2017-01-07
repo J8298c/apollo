@@ -5,11 +5,13 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <p>Recreate Yourself <span><%=title %></span></p>
-    <a href="localhost:3000/users"<button class="login-button">Login</button></a>
+  <body class="splashpage">
+    <button class="login-button"><a href="localhost:3000/users">Login</a></button>
+    <h1 class="splashpage-title"><%= title %>!</h1>
+    <div class="img-holder">
+    <img src="http://localhost:3000/images/splash.jpg" alt="picture by-francesco-gallarotti" class="splashpage-img">
+    </div>
+    <p>Recreate Yourself <span><%=title %></span>!</p>
   </body>
 </html>
 <!--add picture and make splash page-->

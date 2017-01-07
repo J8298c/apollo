@@ -1,16 +1,58 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #5F5F5F;
+  background-color: #23222A;
   display: block;
 }
 
 a {
   color: #00B7FF;
 }
+/*splash page*/
+.splashpage-title {
+  font-size: 45px;
+  text-align: center;
+  color: #8477F5;
+  display: block;
+  margin: 0 auto;
+  font-family: Impact, Charcoal, sans-serif;
+}
+.login-button {
+  float: right;
+  width: 55px;
+  height: 40px;
+  border: 1px solid #2C2F42;
+  border-radius: 10px;
+  background: #2C2F42;
+}
+.splashpage a {
+  color: #8477f5;
+}
+.splashpage-img {
+  margin-top: 20px;
+  height: 550px;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  border: .5px solid #8477F5;
+}
+
+.splashpage p {
+  color: #8477F5;
+  font-size: 23px;
+  margin-left: 25px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+@media screen and (max-width: 650px) {
+  .splash-img {
+    width: 100%;
+    height: 350px;
+  }
+}
 /*user page styling*/
 .user-page-welcome-message {
-  color: #4CAF50;
+  color: #8477F5;
   text-align: center;
 }
 .username {
@@ -19,13 +61,13 @@ a {
 .user-page-list-options{
   list-style: none;
   text-align: center;
-  color:#4CAF50;
+  color:#8477F5;
   margin-bottom: 20px;
 }
 .user-page-userimage {
   display: block;
   margin: 0 auto;
-  border: 4px solid #4CAF50;
+  border: 4px solid #8477F5;
   border-radius: 50%;
 }
 .workout-graph {
@@ -33,7 +75,7 @@ a {
   height: 250px;
   display: block;
   margin: 0 auto;
-  border: 4px solid #4CAF50;
+  border: 4px solid #8477F5;
 }
 /*excersise indivual page */
 .excersise-image {
