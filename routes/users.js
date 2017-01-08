@@ -34,6 +34,13 @@ router.post('/create', function (req, res){
     })
 });
 
+//setting up route to delete users
+router.delete('/user/:id', (req, res) => {
+    User.delete(req.params.id);
+    console.log(`deleted user from apollo :( tell ${req.param.id} we will miss him`);
+    res.status(204).end();
+});
+
 module.exports = router;
 
 

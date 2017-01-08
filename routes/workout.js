@@ -1,8 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var {Workout} = require('../models/workoutmodel');
+const express = require('express');
+const router = express.Router();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const {Workout} = require('../models/workoutmodel');
+const jsonParser = bodyParser.json();
 
 router.get('/create', function(req, res, next){
     res.render('workout/create');
@@ -29,5 +30,25 @@ router.post('/create', function (req, res){
         }
     })
 });
+//route to update workouts based on workout name
+router.put('/:workoutname', jsonParser, function(req, res){
+    //required fields from workoutmodel
+    const requiredFields = ['name', 'equipment'];
+    for(let i = 0; i < requiredFields.length; i++){
+        const field = requiredFields[i];
+        if(!(field in req.body)) {
+            const message = `Missing ${field} in your request`;
+            //need to turn into alert message before deployment
+            console.error(message);
+            return res.status(400).send(message);
+        }
+        console.log(`Updating your workout with ${req.params.workout}`);
+        const updatedWorkout = Workout.update({
+            name: req.body.workout,
+            equipment: req.body.equipment
+        });
+        res.status(204).json(updatedWorkout);
+    }
+})
 
 module.exports = router;
