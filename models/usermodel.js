@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
-mongoose.createConnection('mongodb://localhost/apollo');
+mongoose.createConnection('mongodb://localhost/users');
 
 
 module.exports = {User};
