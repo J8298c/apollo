@@ -1,8 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var {User} = require('../models/usermodel');
+const express = require('express');
+const router = express.Router();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const {User} = require('../models/usermodel');
+const jsonParser = bodyParser.json();
 /* GET users. */
 router.get('/create', function (req, res, next) {
     res.render('users/create', {
@@ -34,13 +35,26 @@ router.post('/create', function (req, res){
     })
 });
 
-//setting up route to delete users
-router.delete('/user/:id', (req, res) => {
-    User.delete(req.params.id);
-    console.log(`deleted user from apollo :( tell ${req.param.id} we will miss him`);
-    res.status(204).end();
-});
-
+router.put('/:username/update', jsonParser, function(req, res){
+    res.render('users/update', {excercisename: req.params.excercisename, bodyParts: [], equipment: 'barbell'});
+    //required fields from workoutmodel
+    const requiredFields = ['name', 'email'];
+    for(let i = 0; i < requiredFields.length; i++){
+        const field = requiredFields[i];
+        if(!(field in req.body)) {
+            const message = `Missing ${field} in your request`;
+            //need to turn into alert message before deployment
+            console.error(message);
+            return res.status(400).send(message);
+        }
+        console.log(`Updating the user with ${req.params.name}`);
+        User.findOneAndUpdate({name: req.params.name}, {name: req.body.name}, function(err, workout) {
+            if (err) throw err;
+            console.log(user);
+            });
+        res.status(204).json(updatedWorkout);
+    }
+})
 module.exports = router;
 
 

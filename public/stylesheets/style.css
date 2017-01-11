@@ -50,6 +50,7 @@ a {
     height: 350px;
   }
 }
+
 /*user page styling*/
 .user-page-welcome-message {
   color: #8477F5;
@@ -102,3 +103,57 @@ a {
   float: left;
   width: 30%;
 }
+/*login page style*/
+
+.loginDiv {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #8477F5;
+  height: 500px;
+  border: 1px solid #8477F5;
+  border-radius: 6px;
+}
+.loginDiv h1 {
+  text-align: center;
+  font-size: 33px;
+}
+.login-username, .login-password, .login-submit {
+  height: 45px;
+  margin: 0 auto;
+  display: block;
+  width: 60%;
+  margin-top: 35px;
+  border: 1px solid white;
+  border-radius: 4px;
+}
+.login-username:-moz-placeholder {
+  font-size: 25px;
+}
+.login-username:-ms-input-placeholder {
+  font-size: 25px;
+}
+.login-username::-webkit-input-placeholder {
+  font-size: 25px;
+}
+.login-password:-moz-placeholder {
+  font-size: 25px;
+}
+.login-password:-ms-input-placeholder {
+  font-size: 25px;
+}
+.login-password::-webkit-input-placeholder {
+  font-size: 25px;
+}
+.login-password {
+  margin-bottom: 25px;
+}
+.login-submit{
+  font-size: 25px;
+}
+.register-link {
+  text-align: right;
+  margin-right: 25px;
+  margin-top: 45px;
+}
+
+

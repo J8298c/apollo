@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <!--how to load this file and then create my post request on submit-->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <form action="/update" method="PUT">
+    <input type="text" placeholder="workout name" name="workout">
+    <input type="text" placeholder="equipment" name="equipment">
+    <fieldset class="bodyparts">
+    <legend>BodyPart for excersise</legend>
+    <input type="checkbox" name="back" value="back" class="bodyparts">Back
+    <input type="checkbox" name="back" value="back" class="bodyparts">Glutes
+    <input type="checkbox" name="back" value="back" class="bodyparts">Chest
+    <input type="checkbox" name="back" value="back" class="bodyparts">Biceps
+    <input type="checkbox" name="back" value="back" class="bodyparts">Triceps
+    <input type="checkbox" name="back" value="back" class="bodyparts">Calves
+    <input type="checkbox" name="back" value="back" class="bodyparts">Quadriceps
+    <input type="checkbox" name="back" value="back" class="bodyparts">Shoulder
+    </fieldset>
+    <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

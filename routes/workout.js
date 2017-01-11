@@ -31,7 +31,8 @@ router.post('/create', function (req, res){
     })
 });
 //route to update workouts based on workout name
-router.put('/:workoutname', jsonParser, function(req, res){
+router.put('/:workoutname/update', jsonParser, function(req, res){
+    res.render("workout/index", {excercisename: req.params.name, bodyParts: [req.params.bodyParts], equipment: req.params.equipment});
     //required fields from workoutmodel
     const requiredFields = ['name', 'equipment'];
     for(let i = 0; i < requiredFields.length; i++){
@@ -43,10 +44,10 @@ router.put('/:workoutname', jsonParser, function(req, res){
             return res.status(400).send(message);
         }
         console.log(`Updating your workout with ${req.params.workout}`);
-        const updatedWorkout = Workout.update({
-            name: req.body.workout,
-            equipment: req.body.equipment
-        });
+        Workout.findOneAndUpdate({name: req.params.name}, {name: req.body.name}, function(err, workout) {
+            if (err) throw err;
+            console.log(workout);
+            });
         res.status(204).json(updatedWorkout);
     }
 })
