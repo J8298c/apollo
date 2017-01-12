@@ -7,8 +7,8 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <form action="/update" method="PUT">
-    <input type="text" placeholder="workout name" name="workout">
+    <form action="<%='/workout/' + workoutname + "/update" %>" method="POST">
+    <input type="text" placeholder="workoutname" name="name">
     <input type="text" placeholder="equipment" name="equipment">
     <fieldset class="bodyparts">
     <legend>BodyPart for excersise</legend>
