@@ -6,13 +6,14 @@ const mongoose = require('mongoose');
 const {Workout} = require('../models/workoutmodel');
 const jsonParser = bodyParser.json();
 router.use(cors());
+
 router.get('/create', function(req, res, next){
     res.render('workout/create');
 });
 router.get('/', function(req, res, next){
-    res.render('workout/index', {
-    });
+    res.render('workout/index', {message: null});
 });
+
 router.get('/:workoutname', function (req, res, next) {
     res.render('workout/show', {workoutname: req.params.workoutname, bodyParts: [], equipment: 'barbell'});
 });
@@ -33,6 +34,7 @@ router.post('/create', function (req, res){
             console.log(err);
         } else {
             console.log("Saved it");
+            res.render(workout/index, {});
         }
     })
 });
@@ -42,6 +44,9 @@ router.post('/:workoutname/update', jsonParser, function(req, res){
     console.log('hit the update route');
     //required fields from workoutmodel
     console.log('Not showing ')
+    //double validation being performed between code and mongoose
+    //check err message from mongoose err produces for missing field
+    //if so remove for loop 
     const requiredFields = ['name', 'equipment'];
     for(let i = 0; i < requiredFields.length; i++){
         const field = requiredFields[i];
@@ -61,6 +66,27 @@ router.post('/:workoutname/update', jsonParser, function(req, res){
     }
     //render index page here--
     res.render("workout/index", {excercisename: req.params.name, bodyParts: [req.params.bodyParts], equipment: req.params.equipment});
-})
+});
+
+//deletes user from DB and renders login page
+router.delete('/:workoutname/delete', jsonParser, function(req, res){
+    console.log('deleting the workout');
+        Workout.findOneAndRemove({name: req.params.workoutname}, function(err, workout){
+            if(err){
+                res.render('workout/index', {message: err}); //adds error message to the workout index 
+            } 
+        });
+        console.log('Workout Deleted');
+        res.render('workout/index', {
+        })
+});
 
 module.exports = router;
+
+//delete for loop not needed 
+        // if(!(field in req.body)) {
+        //     const message = `Missing ${field} in your request`;
+        //     console.error(message);
+        //     return res.status(400).send(message);
+        // }
+       

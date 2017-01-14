@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>New User</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+  <!--will be sent as req.body-->
+    <form action="/users/create" method="POST">
+      <!--insert varaible to display username
+          username will be an uneditable field-->
+          <h3>Hello insert username </h3>
+    <input type="text" placeholder="email" name="email" class="new-user-email">
+    <input type="text" placeholder="Create Password" name="password" class="new-user-password">
+    <button type="submit" class="submitbtn">Submit</button>
+    </form>
+  </body>
+</html>

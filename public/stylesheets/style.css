@@ -1,159 +1,40 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #23222A;
-  display: block;
-}
+  margin: 0;
+  padding: 0;
 
-a {
-  color: #00B7FF;
 }
-/*splash page*/
-.splashpage-title {
-  font-size: 45px;
-  text-align: center;
-  color: #8477F5;
-  display: block;
-  margin: 0 auto;
-  font-family: Impact, Charcoal, sans-serif;
-}
-.login-button {
-  float: right;
-  width: 55px;
-  height: 40px;
-  border: 1px solid #2C2F42;
-  border-radius: 10px;
-  background: #2C2F42;
-}
-.splashpage a {
-  color: #8477f5;
-}
-.splashpage-img {
-  margin-top: 20px;
-  height: 550px;
+/*styling for splash page*/
+.top-nav {
+  display: inline-block; 
   width: 100%;
-  display: block;
-  margin: 0 auto;
-  border: .5px solid #8477F5;
-}
+  
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(35,57,91,1);
+-moz-box-shadow: 0px 2px 2px 0px rgba(35,57,91,1);
+box-shadow: 0px 2px 2px 0px rgba(35,57,91,1);
 
-.splashpage p {
-  color: #8477F5;
-  font-size: 23px;
+}
+.login-button{
+  float: right;
+  font-size: 20px;
+  
+  border-radius: 10px;
+  padding: 7px;
+  margin-right: 15px;
+  margin-top: 8px;
+ 
+}
+.login-button a {
+  text-decoration: none;
+  color: black;
+}
+.splashpage-title {
+  margin-top: 8px;
   margin-left: 25px;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 35px;
 }
-
-@media screen and (max-width: 650px) {
-  .splash-img {
-    width: 100%;
-    height: 350px;
-  }
-}
-
-/*user page styling*/
-.user-page-welcome-message {
-  color: #8477F5;
-  text-align: center;
-}
-.username {
-  font-size: 33px;
-}
-.user-page-list-options{
-  list-style: none;
-  text-align: center;
-  color:#8477F5;
-  margin-bottom: 20px;
-}
-.user-page-userimage {
-  display: block;
-  margin: 0 auto;
-  border: 4px solid #8477F5;
-  border-radius: 50%;
-}
-.workout-graph {
-  width: 400px;
-  height: 250px;
-  display: block;
-  margin: 0 auto;
-  border: 4px solid #8477F5;
-}
-/*excersise indivual page */
-.excersise-image {
-  display: block;
-  margin: 0 auto;
-}
-.excersise-name {
-  text-align: center;
-}
-.indvidual-gym-text {
-  margin: 0 auto;
-  display: block;
-}
-.indvidual-gym-text li {
-  list-style: none;
-  text-align: center;
-}
-.equipment {
-  text-align: center;
-}
-/*excersise/all styling*/
-.excer-all {
-  display: block;
-  float: left;
-  width: 30%;
-}
-/*login page style*/
-
-.loginDiv {
-  width: 60%;
-  margin: 0 auto;
-  background-color: #8477F5;
-  height: 500px;
-  border: 1px solid #8477F5;
-  border-radius: 6px;
-}
-.loginDiv h1 {
-  text-align: center;
-  font-size: 33px;
-}
-.login-username, .login-password, .login-submit {
-  height: 45px;
-  margin: 0 auto;
-  display: block;
-  width: 60%;
-  margin-top: 35px;
-  border: 1px solid white;
-  border-radius: 4px;
-}
-.login-username:-moz-placeholder {
-  font-size: 25px;
-}
-.login-username:-ms-input-placeholder {
-  font-size: 25px;
-}
-.login-username::-webkit-input-placeholder {
-  font-size: 25px;
-}
-.login-password:-moz-placeholder {
-  font-size: 25px;
-}
-.login-password:-ms-input-placeholder {
-  font-size: 25px;
-}
-.login-password::-webkit-input-placeholder {
-  font-size: 25px;
-}
-.login-password {
-  margin-bottom: 25px;
-}
-.login-submit{
-  font-size: 25px;
-}
-.register-link {
+.splash-page-bottom {
   text-align: right;
-  margin-right: 25px;
-  margin-top: 45px;
+  margin-right: 15px;
 }
 
 
