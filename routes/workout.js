@@ -40,7 +40,7 @@ router.post('/create', function (req, res){
 });
 //route to update workouts based on workout name
 //search for express put request 404 in browsers
-router.post('/:workoutname/update', jsonParser, function(req, res){
+router.put('/:workoutname/update', jsonParser, function(req, res){
     console.log('hit the update route');
     //required fields from workoutmodel
     console.log('Not showing ')

@@ -20,7 +20,7 @@ const apolloSchema = new mongoose.Schema({
 
 const Workout = mongoose.model('Workout', apolloSchema);
 
-mongoose.connect('mongodb://localhost/apollo');
+mongoose.connect('mongodb://root:root@ds111529.mlab.com:11529/apollo');
 
 module.exports = {Workout};
 

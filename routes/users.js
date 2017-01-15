@@ -13,7 +13,6 @@ router.get('/create', function (req, res, next) {
      });
 });
 
-
 //get request for login page template
 router.get('/', function (req, res, next) {
     res.render('users/index', {
@@ -29,11 +28,9 @@ router.get('/:username', function (req, res, next){
 //renders page to let user edit thier profile
 //username is unique and therefore uneditable
 router.get('/:username/edit', function(req, res, next){
-    res.render('user/edit', {name: req.params.name, email: req.params.email});
+    res.render('users/edit', {name: req.params.name, email: req.params.email});
 })
-
-
-
+//route to create a new users via the register link in the login page
 router.post('/create', function (req, res){
     console.log('this is the request');
     console.log(req.body);
@@ -54,11 +51,11 @@ router.post('/create', function (req, res){
 //renders userprofile and lets users update 
 //theyre email and password
 router.put('/:username/update', jsonParser, function(req, res){
-    res.render('users/update', {name: req.params.name})
-    console.log('hit the update route');
-    //required fields from workoutmodel
-    console.log('Not showing ')
-    const requiredFields = ['email', 'password'];
+    console.log('updating the user');
+    //double validation being performed between code and mongoose
+    //check err message from mongoose err produces for missing field
+    //if so remove for loop 
+    const requiredFields = ['name', 'email'];
     for(let i = 0; i < requiredFields.length; i++){
         const field = requiredFields[i];
         if(!(field in req.body)) {
@@ -67,23 +64,18 @@ router.put('/:username/update', jsonParser, function(req, res){
             console.error(message);
             return res.status(400).send(message);
         }
-        /* research this tonight */
-
-        //validation to ensure user cant update username
-        //read-only attritubte in html or js code to prevent isnt enough 
-        //read-only on the DB level (research document on db to read only un editiable attr)
-        
-
-        console.log(`Updating your profile with ${req.params.name}`);
-        updatedProfile = User.findOneAndUpdate({email: req.params.email, password: req.params.password }, {email: req.body.email, password: req.body.password}, function(err, workout) {
-            if (err) throw err;
+        console.log(`Updating your workout with ${req.params.workout}`);
+        updatedUser = User.findOneAndUpdate({name: req.params.name, email: req.params.email}, {name: req.body.name, email: req.params.email}, function(err, user) {
+            if (err) {
+                console.error(err);
+            }
             });
             console.log(req.body.name);
-        res.status(204).json(updatedProfile);
-    }
+        res.status(204).json(updatedUser);
 
+    }
     //render index page here--
-    res.render("user/index", {name: req.params.name, bodyParts: [req.params.bodyParts], equipment: req.params.equipment});
+    res.render("users/index", {name: req.params.name, email: req.params.email, password: req.params.password});
 });
 
 //deletes user from DB and renders login page
