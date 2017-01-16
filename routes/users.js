@@ -9,32 +9,38 @@ router.use(cors());
 
 //get request for user register page
 router.get('/create', function (req, res, next) {
-    res.render('users/create', {
+    console.log('step 2 goes to new user registration')
+    res.render('users/create', { name: req.params.name
      });
 });
 
 //get request for login page template
 router.get('/', function (req, res, next) {
+    console.log('Step 1 get req for index page/log in')
     res.render('users/index', {
     });
 });
 
 //renders user profile page
-router.get('/:username', function (req, res, next){
-    console.log('The user is', req.params.name);
+router.get('/:name', function (req, res, next){
+    console.log('step 5 showing user page for updated user');
+    console.log('The user is' + {name: req.params.name});
     res.render('users/show', {name: req.params.name});
+    console.log('The last thing that happens');
 });
 
 //renders page to let user edit thier profile
 //username is unique and therefore uneditable
-router.get('/:username/edit', function(req, res, next){
-    res.render('users/edit', {name: req.params.name, email: req.params.email});
+router.get('/:name/edit', function(req, res, next){
+    console.log('step 4 edit page for user');
+    res.render('users/edit', {name: req.params.name});
+    console.log('This is the request params name =' + req.params.name);
 })
 //route to create a new users via the register link in the login page
 router.post('/create', function (req, res){
-    console.log('this is the request');
-    console.log(req.body);
-    console.log(User);
+    console.log('step 3 im creating your new user');
+    console.log('this is the  create request');
+    console.log("created " + req.body.name);
     const newUser = new User({ name: req.body.name, password: req.body.password, email: req.body.email });
     newUser.save(function(err){
         if(err){
@@ -42,44 +48,34 @@ router.post('/create', function (req, res){
             console.log(err);
         } else {
             console.log("Saved it");
-            res.render('users/show', {name: req.params.name});
-
+            console.log('displaying newly created user page');
+            res.render('users/show', {name: req.body.name});
         }
     })
 });
 
 //renders userprofile and lets users update 
 //theyre email and password
-router.put('/:username/update', jsonParser, function(req, res){
+//need to fix findoneandupdate go to http://coursework.vschool.io/mongoose-crud/
+router.put('/:name/edit', jsonParser, function(req, res){
+    console.log('step 6 updates the users')
     console.log('updating the user');
-    //double validation being performed between code and mongoose
-    //check err message from mongoose err produces for missing field
-    //if so remove for loop 
-    const requiredFields = ['name', 'email'];
-    for(let i = 0; i < requiredFields.length; i++){
-        const field = requiredFields[i];
-        if(!(field in req.body)) {
-            const message = `Missing ${field} in your request`;
-            //need to turn into alert message before deployment
-            console.error(message);
-            return res.status(400).send(message);
-        }
-        console.log(`Updating your workout with ${req.params.workout}`);
-        updatedUser = User.findOneAndUpdate({name: req.params.name, email: req.params.email}, {name: req.body.name, email: req.params.email}, function(err, user) {
+   console.log(`Updating your profile for ${req.params.user}`);
+        User.findOneAndUpdate({name: req.params.name, password: req.params.password, email: req.params.email}, {name: req.body.name, password: req.body.password, email: req.params.email}, function(err, user) {
             if (err) {
-                console.error(err);
+            console.error(err);
             }
-            });
             console.log(req.body.name);
-        res.status(204).json(updatedUser);
+            res.status(204).json(updatedUser);
+            //render index page here--
+            res.render("users/index", {
 
-    }
-    //render index page here--
-    res.render("users/index", {name: req.params.name, email: req.params.email, password: req.params.password});
+            });
+            });
 });
 
 //deletes user from DB and renders login page
-router.delete('/:username/update', jsonParser, function(req, res){
+router.delete('/:name/delete', jsonParser, function(req, res){
     console.log('deleting the user');
     const requiredFields = [ 'username','email', 'password'];
     for(let i = 0; i < requiredFields.length; i++){
