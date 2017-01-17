@@ -7,7 +7,7 @@
   </head>
   <body>
   <!--will be sent as req.body-->
-    <form action="/users/update" method="PUT">
+    <form action=<%= "/users/" + name + "/update?_method=PUT"%> method="POST">
       <!--insert varaible to display username
           username will be an uneditable field-->
           <h3>Hello <%=name %> </h3>
