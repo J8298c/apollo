@@ -1,92 +1,74 @@
 const express = require('express');
-var cors = require('cors');
+const methodOverride = require('method-override');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const {Workout} = require('../models/workoutmodel');
 const jsonParser = bodyParser.json();
-router.use(cors());
+
+router.use(methodOverride('_method'));
+
+//middleware for loging
+//===================================================//
+router.use(function(req, res, next){
+    console.log('Currently making a ' + req.method + ' request');
+    console.log('From this current URL ' + req.url);
+    next();
+})
+
+//Routes for apollo
+//====================================================//
 
 router.get('/create', function(req, res, next){
-    res.render('workout/create');
+    res.render('workout/create', {
+        //enter variable here
+    });
 });
+
 router.get('/', function(req, res, next){
     res.render('workout/index', {message: null});
 });
 
 router.get('/:workoutname', function (req, res, next) {
-    res.render('workout/show', {workoutname: req.params.workoutname, bodyParts: [], equipment: 'barbell'});
+    res.render('workout/show', {workoutname: req.params.workoutname, bodyParts: [req.params.bodyParts], equipment: req.params.equipment});
 });
 //for put rquest need a {get} to serve template
 //also put to submit to information to server
 router.get('/:workoutname/edit', function (req, res, next) {
-    res.render('workout/edit', {workoutname: req.params.workoutname, bodyParts: [], equipment: 'barbell'});
+    res.render('workout/edit', {workoutname: req.params.workoutname, bodyParts: [req.params.bodyParts], equipment: req.params.equipment});
 });
 
 router.post('/create', function (req, res){
-    console.log('this is the request');
-    console.log(req.body);
-    console.log(Workout);
+
     const newWorkout = new Workout({ name: req.body.workout, equipment: req.body.equipment });
     newWorkout.save(function(err){
-        if(err){
-            console.log("Couldnt save your awesome workout");
-            console.log(err);
-        } else {
-            console.log("Saved it");
-            res.render(workout/index, {});
-        }
+        if(err)
+            res.send(err);
+            console.log('saving ' + req.body.name);
+            res.render('workout/show', {
+                //enter variable here
+            })
     })
 });
 //route to update workouts based on workout name
 //search for express put request 404 in browsers
 router.put('/:workoutname/update', jsonParser, function(req, res){
-    console.log('hit the update route');
-    //required fields from workoutmodel
-    console.log('Not showing ')
-    //double validation being performed between code and mongoose
-    //check err message from mongoose err produces for missing field
-    //if so remove for loop 
-    const requiredFields = ['name', 'equipment'];
-    for(let i = 0; i < requiredFields.length; i++){
-        const field = requiredFields[i];
-        if(!(field in req.body)) {
-            const message = `Missing ${field} in your request`;
-            //need to turn into alert message before deployment
-            console.error(message);
-            return res.status(400).send(message);
-        }
-        console.log(`Updating your workout with ${req.params.workout}`);
-        updatedWorkout = Workout.findOneAndUpdate({name: req.params.name}, {name: req.body.name}, function(err, workout) {
-            if (err) throw err;
-            });
-            console.log(req.body.name);
-        res.status(204).json(updatedWorkout);
-
-    }
-    //render index page here--
-    res.render("workout/index", {excercisename: req.params.name, bodyParts: [req.params.bodyParts], equipment: req.params.equipment});
+    res.render('workout/show', {
+        //variable here
+    });
+    Workout.findOneAndUpdate({ 'name': req.body.name}, {'name': req.body.name, 'bodyParts': req.body.bodyParts, 'equipment': req.body.equipment}, {'new': true}, function(err, workout){
+        if (err) return handleError(err);
+        console.log('New wokout is ' + workout.name + workout.bodyParts + workout.equipment);
+    })
 });
 
 //deletes user from DB and renders login page
-router.delete('/:workoutname/delete', jsonParser, function(req, res){
-    console.log('deleting the workout');
-        Workout.findOneAndRemove({name: req.params.workoutname}, function(err, workout){
-            if(err){
-                res.render('workout/index', {message: err}); //adds error message to the workout index 
-            } 
-        });
-        console.log('Workout Deleted');
-        res.render('workout/index', {
-        })
+router.delete('/:workoutname/remove', function(req, res){
+    res.render('workout/index', {});
+    Workout.findOneAndRemove({ 'name': req.params.name}, function(err, workout){
+        if (err) return handleError(err);
+        console.log('deleted' + req.params.name + 'workout');
+    })
 });
 
 module.exports = router;
-
-//delete for loop not needed 
-        // if(!(field in req.body)) {
-        //     const message = `Missing ${field} in your request`;
-        //     console.error(message);
-        //     return res.status(400).send(message);
-        // }
-       

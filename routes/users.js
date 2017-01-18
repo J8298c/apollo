@@ -48,6 +48,11 @@ router.get('/:name/edit', function(req, res, next){
     res.render('users/edit', {name: req.params.name});
     console.log('This is the request params name =' + req.params.name);
 });
+//get request that renders the delete template
+router.get('/:name/delete', function(req, res, next){
+    console.log('Getting delete page')
+    res.render('users/delete', {name: req.params.name});
+})
 //post route to create new users
 router.post('/create', function(req, res){
     
@@ -60,67 +65,21 @@ router.post('/create', function(req, res){
     })
 });
 router.put('/:name/update', function(req, res){
-    res.render('users/edit', {name: req.params.name});
-    console.log('finnaly doing a put');
-
-    //debug then find one and update 
-    // user.findOneAndUpdate({name: req.params.name}, {$set: {email: req.body.email, password: req.body.password}}, function(err, user){
-    //     if(err){
-    //         console.log(err);
-    //     } else {
-    //         user.save(function(err){
-    //             if(err)
-    //             res.send(err);
-    //             console.log('updated user');
-    //             res.render('users/show');
-    //         })
-    //     }
-    // });
+    // res.render('users/edit', {name: req.params.name});
+    res.render('users/show', {name: req.params.name});
+    //mongo db finds document by user name and edits field from /edit form 
+    User.findOneAndUpdate({ 'name': req.body.name },{'email': req.body.email, 'password': req.body.password},{'new': true} ,function (err, user) {
+        if (err) return handleError(err);
+        console.log('Found your user his name is ' + user.name + 'his email is '+ user.email +  'and his new password ' + user.password);
+    })
 });
-
-//work around for put express with browsers 
-    // updatedUser.save(function(err){
-    //     if(err)
-    //         res.send(err);
-    //     console.log('updated user');
-    // })
-// })
-//route to handle updating user
-// router.route('/users/update')
-// .put(function(req, res){
-//     user.findOneAndUpdate(req.params.name, function(err, user){
-//         if(err)
-//             res.send(err);
-//             user.email = req.body.email;
-//             user.password = req.body.password;
-//             user.save(function(err){
-//                 if(err)
-//                     res.send(err);
-//                 res.render('users/show', {name: req.body.name});
-//             })
-//         })
-//     });
-
-//renders userprofile and lets users update 
-//theyre email and password
-//need to fix findoneandupdate go to http://coursework.vschool.io/mongoose-crud/
-// router.put('/:name/edit', jsonParser, function(req, res){
-//     console.log('step 6 updates the users')
-//     console.log('updating the user');
-//    console.log(`Updating your profile for ${req.params.user}`);
-//         User.findOneAndUpdate({name: req.params.name, password: req.params.password, email: req.params.email}, {name: req.body.name, password: req.body.password, email: req.params.email}, function(err, user) {
-//             if (err) {
-//             console.error(err);
-//             }
-//             console.log(req.body.name);
-//             res.status(204).json(updatedUser);
-//             //render index page here--
-//             res.render("users/index", {
-
-//             });
-//             });
-// });
-
+router.delete('/:name/remove', function(req, res){
+    res.render('users/index', {});
+    User.findOneAndRemove({ 'name': req.params.name }, function(err, user){
+        if (err) return handleError(err);
+        console.log('deleted user named ' + req.params.name);
+    })
+});
 
 module.exports = router;
 
