@@ -2,12 +2,12 @@
 <html>
   <head>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title><%=workoutname %></title>
+    <title><%=name %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
   <img src="/images/userimage.png" alt="user image for user homepage" class="excersise-image">
-  <h1 class="workout-name"><%=workoutname %></h1>
+  <h1 class="workout-name"><%=name %></h1>
     <!--set up divs to contain images of workout along with description and name of workout 
     insert for loop to go through workout obj--> 
     <div class="indvidual-gym-text">
@@ -18,7 +18,7 @@
     </ul>
     </div>
     <p class="equipment"><%=equipment %></p>
-    <a href=<%="/workout/" + workoutname + "/edit" %>>Edit your information</a>
-    <a href=<%="/workout/" + workoutname + "/remove" %>>Edit your information</a>
+    <a href=<%="/workout/" + name + "/edit" %>>Edit your information</a>
+    <a href=<%="/workout/" + name + "/remove" %>>Edit your information</a>
   </body>
 </html>

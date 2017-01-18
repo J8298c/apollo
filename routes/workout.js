@@ -30,23 +30,24 @@ router.get('/', function(req, res, next){
 });
 
 router.get('/:workoutname', function (req, res, next) {
-    res.render('workout/show', {workoutname: req.params.workoutname, bodyParts: [req.params.bodyParts], equipment: req.params.equipment});
+    res.render('workout/show', {name: req.params.name, bodyParts: [req.params.bodyParts], equipment: req.params.equipment});
 });
 //for put rquest need a {get} to serve template
 //also put to submit to information to server
 router.get('/:workoutname/edit', function (req, res, next) {
-    res.render('workout/edit', {workoutname: req.params.workoutname, bodyParts: [req.params.bodyParts], equipment: req.params.equipment});
+    res.render('workout/edit', {name: req.params.name, bodyParts: [req.params.bodyParts], equipment: req.params.equipment});
 });
 
 router.post('/create', function (req, res){
 
-    const newWorkout = new Workout({ name: req.body.workout, equipment: req.body.equipment });
+    const newWorkout = new Workout({ name: req.body.name, bodyParts: [req.body.bodyParts], equipment: req.body.equipment });
     newWorkout.save(function(err){
         if(err)
             res.send(err);
             console.log('saving ' + req.body.name);
             res.render('workout/show', {
-                //enter variable here
+                name: req.params.name,
+                bodyParts: req.params.bodyParts
             })
     })
 });
@@ -54,7 +55,8 @@ router.post('/create', function (req, res){
 //search for express put request 404 in browsers
 router.put('/:workoutname/update', jsonParser, function(req, res){
     res.render('workout/show', {
-        //variable here
+                name: req.params.name,
+                bodyParts: req.params.bodyParts
     });
     Workout.findOneAndUpdate({ 'name': req.body.name}, {'name': req.body.name, 'bodyParts': req.body.bodyParts, 'equipment': req.body.equipment}, {'new': true}, function(err, workout){
         if (err) return handleError(err);
