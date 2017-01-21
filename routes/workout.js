@@ -4,9 +4,9 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const {Workout} = require('../models/workoutmodel');
-const jsonParser = bodyParser.json();
-
 router.use(methodOverride('_method'));
+router.use(bodyParser.json())
+
 
 //middleware for loging
 //===================================================//
@@ -19,6 +19,8 @@ router.use(function(req, res, next){
 //Routes for apollo
 //====================================================//
 
+/*all request must use workoutname , equipment, and bodyParts*/
+
 router.get('/create', function(req, res, next){
     res.render('workout/create', {
         //enter variable here
@@ -30,47 +32,60 @@ router.get('/', function(req, res, next){
 });
 
 router.get('/:workoutname', function (req, res, next) {
-    res.render('workout/show', {name: req.params.name, bodyParts: [req.params.bodyParts], equipment: req.params.equipment});
+    res.render('workout/show', {name: req.params.workoutname});
 });
 //for put rquest need a {get} to serve template
 //also put to submit to information to server
 router.get('/:workoutname/edit', function (req, res, next) {
-    res.render('workout/edit', {name: req.params.name, bodyParts: [req.params.bodyParts], equipment: req.params.equipment});
+    res.render('workout/edit', {name: req.params.workoutname});
 });
-
+router.get('/:workoutname/remove', function(req, res, next){
+    res.render('workout/delete', {name: req.params.workoutname})
+})
 router.post('/create', function (req, res){
-
-    const newWorkout = new Workout({ name: req.body.name, bodyParts: [req.body.bodyParts], equipment: req.body.equipment });
-    newWorkout.save(function(err){
+    //creat a copy instead of messing with actual object to illevaite unexpected behaviours//
+    const bodyCopy = Object.assign({}, req.body);
+    //object destructure
+    const {workout, equipment} = bodyCopy;
+    console.log('im the workout var');
+    console.log(workout);
+    delete bodyCopy.workout;
+    delete bodyCopy.equipment;
+    const partsOfBody = Object.keys(bodyCopy);
+    const workoutObj = new Workout({name: workout, equipment: equipment, bodyParts: partsOfBody });
+    // const workout = new Workout({ name: req.body.name, bodyParts: [req.body.bodyParts], equipment: req.body.equipment });
+    workoutObj.save(function(err){
         if(err)
             res.send(err);
-            console.log('saving ' + req.body.name);
             res.render('workout/show', {
-                name: req.params.name,
-                bodyParts: req.params.bodyParts
+                name: workout,
+                bodyParts: partsOfBody,
+                equipment: equipment
             })
+            console.log(req.body);
     })
 });
-//route to update workouts based on workout name
-//search for express put request 404 in browsers
-router.put('/:workoutname/update', jsonParser, function(req, res){
-    res.render('workout/show', {
-                name: req.params.name,
-                bodyParts: req.params.bodyParts
+
+router.put('/:workoutname/update', function(req, res){
+    res.render('workout/show', {name: req.params.workoutname, bodyParts: req.body.bodyParts, equipment: req.body.equipment});
+    console.log('the req params, workout variable and equipment');
+    console.log(req.params.workoutname, req.body.equipment, req.body.bodyParts);
+    Workout.findOneAndUpdate({ 'name': req.body.workoutname }, { 'equipment': req.body.equipment, 'bodyParts': req.body.bodyParts}, {'new': true}, function(err, workingout){
+        if(err) return handleError(err)
+        console.log('updated it')
     });
-    Workout.findOneAndUpdate({ 'name': req.body.name}, {'name': req.body.name, 'bodyParts': req.body.bodyParts, 'equipment': req.body.equipment}, {'new': true}, function(err, workout){
-        if (err) return handleError(err);
-        console.log('New wokout is ' + workout.name + workout.bodyParts + workout.equipment);
-    })
 });
+//stop changing names and stay consistent
+//think how the change will affect your code
 
 //deletes user from DB and renders login page
 router.delete('/:workoutname/remove', function(req, res){
-    res.render('workout/index', {});
-    Workout.findOneAndRemove({ 'name': req.params.name}, function(err, workout){
+    res.render('workout/index', {message: null});
+    Workout.findOneAndRemove({ 'name': req.params.workoutname}, function(err, workout){
         if (err) return handleError(err);
-        console.log('deleted' + req.params.name + 'workout');
+        console.log('deleted it')
     })
 });
+
 
 module.exports = router;

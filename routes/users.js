@@ -44,7 +44,7 @@ router.get('/:name', function (req, res, next){
 //renders page to let user edit thier profile
 //username is unique and therefore uneditable
 router.get('/:name/edit', function(req, res, next){
-    console.log('step 4 edit page for user');
+
     res.render('users/edit', {name: req.params.name});
     console.log('This is the request params name =' + req.params.name);
 });
