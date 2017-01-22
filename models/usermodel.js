@@ -11,7 +11,14 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        validate:{
+            validator: function(v){
+                return /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v);
+            },
+            message: '{Value} is not a present email'
+        }
+
     },
     password: { 
         type: String,
@@ -22,9 +29,9 @@ const userSchema = new mongoose.Schema({
 //find middleware to validate js to take username and make it http friendly 
 const User = mongoose.model('User', userSchema);
 mongoose.createConnection('mongodb://root:root@ds111529.mlab.com:11529/apollo');
-userSchema.path('email').validate(function (email) {
-   var emailRegex = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-   return emailRegex.test(email.text); // Assuming email has a text attribute
-}, 'The e-mail field cannot be empty.')
 userSchema.plugin(uniqueValidator);
+userSchema.pre('update', function(next){
+    this.options.runValidators = true;
+    next();
+})
 module.exports = {User};
