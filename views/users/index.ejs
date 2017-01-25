@@ -8,12 +8,12 @@
   <body>
       <div class="loginDiv">
       <h1>Apollo Total Fitness</h1>
-      <form action="" class="login">
-        <input type="text" class="login-username" placeholder="Username">
-        <input type="password" class="login-password" placeholder="Password">
+      <form action="/login" class="login" method="POST">
+        <input type="text" class="login-username" placeholder="Username" name="name">
+        <input type="password" class="login-password" placeholder="Password" name="password">
         <button class="login-submit">Login</button>
-        <p class="register-link">Need to Register? <a href="/users/create">Register</a>
       </form>
+      <p class="register-link">Need to Register? <a href="/users/register">Register</a>
       </div>
   </body>
 </html>

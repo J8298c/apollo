@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
+validator = require('node-mongoose-validator');
 const uniqueValidator = require('mongoose-unique-validator');
 mongoose.Promise = global.Promise;
 
@@ -12,13 +13,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-        validate:{
-            validator: function(v){
-                return /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(v);
-            },
-            message: '{Value} is not a present email'
-        }
-
+        validate: validator.$isEmail({msg: 'Please provide proper email'})
     },
     password: { 
         type: String,
@@ -30,8 +25,4 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 mongoose.createConnection('mongodb://root:root@ds111529.mlab.com:11529/apollo');
 userSchema.plugin(uniqueValidator);
-userSchema.pre('update', function(next){
-    this.options.runValidators = true;
-    next();
-})
 module.exports = {User};
