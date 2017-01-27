@@ -9,32 +9,19 @@ const {User} = require('../models/usermodel');
 const jsonParser = bodyParser.json();
 
 router.use(methodOverride('_method'));
-// router.use(passport.initialize());
-// router.use(passport.session());
+router.use(passport.initialize());
+router.use(passport.session());
 
-// passport.use(new LocalStrategy({
-//     usernameField: 'name'
-//   },
-//   function(username, password, done) {
-//     User.findOne({ name: username }, function (err, user) {
-//       if (err) { return done(err); }
-//       // Return if user not found in database
-//       if (!user) {
-//         return done(null, false, {
-//           message: 'User not found'
-//         });
-//       }
-//       // Return if password is wrong
-//       if (!user.validPassword(password)) {
-//         return done(null, false, {
-//           message: 'Password is wrong'
-//         });
-//       }
-//       // If credentials are correct, return the user object
-//       return done(null, user);
-//     });
-//   }
-// ));
+passport.serializeUser(function(user, done) {
+  done(null, user.name);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findOne({name: name}, function(err, user) {
+    done(err, user);
+  });
+});
+
 
 //middleware for logging && User Authentication
 //==================================================//
@@ -46,6 +33,33 @@ router.use(function(req, res, next){
     next();
 });
 
+//passport middleware
+passport.use(new LocalStrategy({
+    usernameField: 'name',
+    passwordField: 'password'
+},
+function(username, password, done){
+    console.log('finding user');
+    User.findOne({'name': username}, function(err, user){
+        console.log('current user');
+        console.log(username)
+        if(err){
+            return done(err);
+        }
+        if(!user) {
+            return done(null, false, {message: 'You entered the wrong user name please try again'});
+        }
+        // if(!user.validPassword(password)){
+        //     return done(null, false, {message: 'Incorrect Password'});
+        // }
+        return done(null, user);
+        console.log('returning user that just signed in');
+        console.log(user);
+        return user;
+    });
+}));
+
+
 //Routes for apollo app 
 //==================================================//
 //get request for user register page
@@ -54,13 +68,17 @@ router.get('/register', function (req, res, next) {
      });
 });
 
+
+
 //get request for login page template
 router.get('/', function (req, res, next) {
     res.render('users/index', {
     });
 });
 
-// renders user profile page
+
+
+//renders user profile page
 router.get('/:name', function (req, res, next){
     res.render('users/profile', {name: req.params.name});
 });
@@ -88,12 +106,6 @@ router.post('/register', function(req, res){
     })
 });
 
-// router.post('/login', 
-//   passport.authenticate('local', { failureRedirect: 'users/index' }),
-//   function(req, res) {
-//     res.render('users/show', {name: req.body.name});
-//   });
-
 router.put('/:name/update', function(req, res, next){
     let email = req.body.email;
     if(validEmailCheck(email)){
@@ -113,6 +125,11 @@ router.delete('/:name/remove', function(req, res){
         if (err) return handleError(err);
     })
 });
+//login Authentication
+router.post('/login', 
+    passport.authenticate('local', {successRedirect: '/:name',
+                                    failureRedirect: '/',        
+                                    failureFlash: true }));
 
 /*function to validate email for findOneAndUpdate method*/
 //===========================================================================//
@@ -128,4 +145,12 @@ function validEmailCheck(email){
 
 module.exports = router;
 
+
+//enum pages and make pages private resaerch how to use passport to close all routes unless user is autheticated..
+
+//TODO custom validation with mongoose
+//making resources private with Authentication using passport/express
+//create USER 
+//attending my first meetup
+//
 
