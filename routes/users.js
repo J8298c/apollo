@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const {User} = require('../models/usermodel');
+const {User, validEmailCheck} = require('../models/usermodel');
 const jsonParser = bodyParser.json();
 
 router.use(methodOverride('_method'));
@@ -14,6 +14,7 @@ router.use(passport.session());
 
 passport.serializeUser(function(user, done) {
   done(null, user.name);
+  console.log(user);
 });
 
 passport.deserializeUser(function(id, done) {
@@ -55,6 +56,7 @@ function(username, password, done){
         return done(null, user);
         console.log('returning user that just signed in');
         console.log(user);
+        loggedIn(user);
         return user;
     });
 }));
@@ -67,7 +69,13 @@ router.get('/register', function (req, res, next) {
     res.render('users/registration', { name: req.params.name
      });
 });
-
+function loggedIn(user){
+    if(user){
+        console.log('hi');
+    } else{
+        console.log('nope');
+    }
+}
 
 
 //get request for login page template
@@ -76,26 +84,32 @@ router.get('/', function (req, res, next) {
     });
 });
 
-
-
 //renders user profile page
-router.get('/:name', function (req, res, next){
+const failureRoute = passport.authenticate('local', { failureRedirect: '/users/loginPage'});
+
+
+router.get('/loginPage', function(req, res){
+    res.render('users/index', {});
+    console.log('reached log in page');
+});
+//if calling get request ensure the redirect is before the actual authentication get req
+router.get('/:name', failureRoute, function (req, res, next){
     res.render('users/profile', {name: req.params.name});
 });
 
 //renders page to let user edit thier profile
 //username is unique and therefore uneditable
-router.get('/:name/edit', function(req, res, next){
+router.get('/:name/edit', failureRoute, function(req, res, next){
     res.render('users/edit', {name: req.params.name});
 });
 
 //get request that renders the delete template
-router.get('/:name/delete', function(req, res, next){
+router.get('/:name/delete', failureRoute, function(req, res, next){
     res.render('users/delete', {name: req.params.name});
 });
 
 //post route to create new users
-router.post('/register', function(req, res){
+router.post('/register', failureRoute, function(req, res){
     let name = req.body.name;
     name = name.replace(/\s/g,"");
     const user = new User({name: name, email: req.body.email, password: req.body.password});
@@ -106,49 +120,51 @@ router.post('/register', function(req, res){
     })
 });
 
-router.put('/:name/update', function(req, res, next){
+router.put('/:name/update', failureRoute, function(req, res, next){
     let email = req.body.email;
+    let errorEmail;
     if(validEmailCheck(email)){
          User.findOneAndUpdate({ 'name': req.body.name },{'email': email, 'password': req.body.password},{'new': true} ,function (err, user) {
-        if (err) return handleError(err);
+        if (err){
+            errorEmail = err;
+            // return handleError(err);
+        } 
         console.log('your new email is ' + email);
+        res.render('users/profile', {name: req.params.name});
     })   
     } else {
         console.log('Bad email');
+        res.render(errorEmail)
     }
-    res.render('users/profile', {name: req.params.name});
 });
 
-router.delete('/:name/remove', function(req, res){
+router.delete('/:name/remove', failureRoute, function(req, res){
     res.render('users/index', {});
     User.findOneAndRemove({ 'name': req.params.name }, function(err, user){
         if (err) return handleError(err);
     })
 });
-//login Authentication
-router.post('/login', 
-    passport.authenticate('local', {successRedirect: '/:name',
-                                    failureRedirect: '/',        
-                                    failureFlash: true }));
+router.get('/profile', function(req, res, next){
+    res.render('users/profile', {name: req.params.name});
+});
 
-/*function to validate email for findOneAndUpdate method*/
-//===========================================================================//
-function validEmailCheck(email){
-    const emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    const valid = emailReg.test(email);
-    if(valid){
-        return true;
-    } else {
-        return false;
-    }
-}
+//login Authentication
+router.post('/login',
+  failureRoute,
+  function(req, res) {
+        res.render('users/profile', {name: req.body.name})
+    });
+
+
+
 
 module.exports = router;
 
 
+
 //enum pages and make pages private resaerch how to use passport to close all routes unless user is autheticated..
 
-//TODO custom validation with mongoose
+
 //making resources private with Authentication using passport/express
 //create USER 
 //attending my first meetup

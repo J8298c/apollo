@@ -1,6 +1,8 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const router = express.Router();
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const {Workout} = require('../models/workoutmodel');
@@ -21,7 +23,7 @@ router.use(function(req, res, next){
 
 /*all request must use workoutname , equipment, and bodyParts*/
 
-router.get('/create', function(req, res, next){
+router.get('/create',function(req, res, next){
     res.render('workout/create', {
         //enter variable here
     });
@@ -66,7 +68,7 @@ router.post('/create', function (req, res){
     })
 });
 
-router.put('/:workoutname/update', function(req, res){
+router.put('/:workoutname/update',function(req, res){
     res.render('workout/show', {name: req.params.workoutname, bodyParts: req.body.bodyParts, equipment: req.body.equipment});
     console.log('the req params, workout variable and equipment');
     console.log(req.params.workoutname, req.body.equipment, req.body.bodyParts);
