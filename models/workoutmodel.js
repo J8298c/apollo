@@ -17,15 +17,6 @@ const apolloSchema = new mongoose.Schema({
         default: new Date()
     }
 });  
-
 const Workout = mongoose.model('Workout', apolloSchema);
-
 mongoose.connect('mongodb://root:root@ds111529.mlab.com:11529/apollo');
-
 module.exports = {Workout};
-
-//todo 
-//fix form for body 
-//implement showpage for both excersises and users
-//do same for user that i have for excersises 
-//rename excersises to workout

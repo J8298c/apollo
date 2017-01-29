@@ -54,13 +54,14 @@ router.post('/create', function (req, res){
     delete bodyCopy.workout;
     delete bodyCopy.equipment;
     const partsOfBody = Object.keys(bodyCopy);
-    const workoutObj = new Workout({name: workout, equipment: equipment, bodyParts: partsOfBody });
-    // const workout = new Workout({ name: req.body.name, bodyParts: [req.body.bodyParts], equipment: req.body.equipment });
+    let workoutName = workout.replace(/\s/g,"");
+    const workoutObj = new Workout({name: workoutName, equipment: equipment, bodyParts: partsOfBody });
+
     workoutObj.save(function(err){
         if(err)
             res.send(err);
             res.render('workout/show', {
-                name: workout,
+                name: workoutName,
                 bodyParts: partsOfBody,
                 equipment: equipment
             })
