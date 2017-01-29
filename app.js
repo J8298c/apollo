@@ -30,12 +30,6 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/workout', workout);
 
-// app.use('/users', users);
-//use passport to auth useer 
-//after user clicks sumbit to authenticate create post request
-///excersise/create should to point to slash create 
-
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   const err = new Error('Not Found');
