@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {APOLLO_PRODUCTION_DATABASE, APOLLO_TEST_DATABASE} = require('../test/config');
 mongoose.Promise = global.Promise;
 
 const apolloSchema = new mongoose.Schema({
@@ -18,6 +19,12 @@ const apolloSchema = new mongoose.Schema({
     }
 });  
 const Workout = mongoose.model('Workout', apolloSchema);
-// mongoose.connect('mongodb://root:root@ds111529.mlab.com:11529/apollo');
- mongoose.createConnection('mongodb://localhost/apollotestdb');
+//check how heroku deploys with test 
+//to ensure it doesnt completely erase DB
+
+if(process.env.NODE_ENV === 'production'){
+    mongoose.createConnection(APOLLO_PRODUCTION_DATABASE);
+} else {
+    mongoose.createConnection(APOLLO_TEST_DATABASE);
+}
 module.exports = {Workout};

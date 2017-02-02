@@ -1,8 +1,7 @@
-const {testDB} = require('../models/workoutmodel');
-exports.DATABASE_URL = process.env.DATABASE_URL ||
-                       global.DATABASE_URL ||
-                      'mongodb://localhost/apollodb';
-exports.TEST_DATABASE = (
-	process.env.TEST_DATABASE_URL ||
-	'mongodb://localhost/apollotestdb');
+
+exports.APOLLO_PRODUCTION_DATABASE = process.env.APOLLO_PRODUCTION_DATABASE ||
+                       global.DATABASE_URL;
+                      
+exports.APOLLO_TEST_DATABASE = 
+	        process.env.APOLLO_TEST_DATABASE;
 exports.PORT = process.env.PORT || 8080;

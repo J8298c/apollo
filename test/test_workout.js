@@ -5,7 +5,7 @@ const chaiHttp = require('chai-http');
 const express = require('express');
 const faker = require('faker');
 const should = chai.should();
-const {TEST_DATABASE, PORT} = require('./config');
+const {APOLLO_TEST_DATABASE, PORT} = require('../test/config');
 const {Workout} = require('../models/workoutmodel');
 const app = express();
 const assert = require('assert');
@@ -44,7 +44,7 @@ function eraseDB() {
   });
 }
 let server;
-function runServer(databaseUrl=DATABASE_URL, port=PORT) {
+function runServer(databaseUrl=APOLLO_TEST_DATABASE, port=PORT) {
   return new Promise((resolve, reject) => {
     mongoose.connect(databaseUrl, err => {
       if (err) {
@@ -83,7 +83,7 @@ function closeServer() {
 
 describe('Testing API Endpoints', function(){
       before(function() {
-      return runServer(TEST_DATABASE);
+      return runServer(APOLLO_TEST_DATABASE);
     });
       beforeEach(function() {
       return seedData();
