@@ -13,64 +13,8 @@ const assert = require('assert');
 chai.use(chaiHttp);
 mongoose.Promise = global.Promise;
 
-
-describe('Testing API Endpoints', function(){
-      before(function() {
-      return runServer(TEST_DATABASE);
-    });
-      beforeEach(function() {
-      return seedData();
-    });
-    afterEach(function() {
-    return eraseDB();
-  });
-
-  after(function() {
-    return closeServer();
-  });
-  
-  describe('USER GET Request', function(){
-    it('should return list of all users in DB', function(){
-      let res;
-      return chai.request(app);
-      return Users.count();
-    });
-  })
-  describe('USER POST request', function(){
-    it('should reject a user saving to the db when value is incorrect', function(){
-      
-  //     //assertion that DB is empty
-  User.count({}, function(err, count){
-    assert.equal(count, 0);
-  })
-  let res;
-  chai.request(app)
-  .post('/users/register', {name: faker.name.firstName(), email: faker.hacker.verb(), password: faker.lorem.word()})
-  .then(_res => {
-    res = _res;
-    res.should.have.status(406)
-    assert.equal(count, 0);
-    })
-  })
-    it('should save a user to the db when all values are correct', function(){
-    //counting number of users in DB which should be 0
-    User.count({}, function( err, count){
-      assert.equal(count, 0);
-       })
-     let res;
-     chai.request(app)
-     .post('/users/register', {name: faker.name.firstName(), email:faker.internet.email(), password: faker.commerce.product()})
-     .then(_res =>{
-       res = _res;
-       res.should.have.status(200);
-       assert.equal(count, 1);
-       })
-     })
-  })
-
-})
-
-
+//============================================//
+/* Hook functions for testing */
 
 //fill DB with users to use for testing
 function seedData(){
@@ -133,3 +77,106 @@ function closeServer() {
      });
   });
 }
+
+//================================================//
+/* testing */
+
+describe('Testing API Endpoints', function(){
+      before(function() {
+      return runServer(TEST_DATABASE);
+    });
+      beforeEach(function() {
+      return seedData();
+    });
+    afterEach(function() {
+    return eraseDB();
+  });
+
+  after(function() {
+    return closeServer();
+  });
+  
+  describe('USER GET Request', function(){
+    it('should return list of all users in DB', function(){
+      let res;
+      return chai.request(app);
+      return Users.count();
+    });
+  })
+  describe('USER POST request', function(){
+    it('should reject a user saving to the db when value is incorrect', function(){
+      
+  //     //assertion that DB is empty
+  User.count({}, function(err, count){
+    return count;
+  })
+  let res;
+  chai.request(app)
+  .post('/users/register', {name: faker.name.firstName(), email: faker.hacker.verb(), password: faker.lorem.word()})
+  .then(_res => {
+    res = _res;
+    res.should.have.status(406)
+    assert.equal(count, 6);
+    })
+  })
+    it('should save a user to the db when all values are correct', function(){
+    //counting number of users in DB which should be 0
+     let res;
+     chai.request(app)
+     .post('/users/register', {name: faker.name.firstName(), email:faker.internet.email(), password: faker.commerce.product()})
+     .then(_res =>{
+       res = _res;
+       res.should.have.status(200);
+       res.should.be.json;
+       res.should.be.a('object');
+       res.should.include.keys('name', 'email', 'password');
+       assert.equal(count, 7);
+       })
+     })
+  });
+    describe('USER PUT request',()=> {
+      it('should add new user to db', ()=>{
+        let res;
+        chai.request(app)
+        .post('/users/register', {name: 'juan', email: faker.internet.email(), password: faker.commerce.price()})
+      })
+      it('should find user that was just created and updating email and passwrd field', ()=>{
+        chai.request(app)
+        .put('/users/:name/edit', {name: 'juan', email: faker.internet.email(), password: faker.hacker.adjective()})
+        .then(_res => {
+          res.should.have.status(204);
+          res.should.be.json;
+          res.should.be.a('object');
+        })
+        console.log('updated');
+        return chai.request(app)
+      })
+    })
+    describe('USER DELETE request', () =>{
+      it('should add new user to the db for test', ()=>{
+        let res;
+        chai.request(app)
+        .post('/users/register', {name: 'deleteMe', email: faker.internet.email(), password: faker.commerce.price()})
+        // .then(_res =>{
+        //   res = _res;
+        //   res.should.have.status(200);
+        //   res.should.be.json;
+        //   res.should.be.a('object');
+        //   res.should.include.keys('name', 'email', 'password');
+        //   assert.equal(count, 7);
+        // })
+        it('should find newly created user and delete from DB', ()=>{
+          let res;
+          chai.request(app)
+          .delete('/users/:name/remove', {name: 'deleteMe'})
+          .then(_res =>{
+            res = _res;
+            res.should.have.status(200);
+            assert.equal(count, 6)
+          })
+          console.log('deleted');
+        })
+      })
+    })
+});
+
