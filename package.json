@@ -19,6 +19,7 @@
     "method-override": "^2.3.7",
     "mocha": "^3.2.0",
     "mongoose": "^4.7.5",
+    "mongoose-unique-validator": "^1.0.3",
     "morgan": "~1.7.0",
     "node-mongoose-validator": "^1.2.0",
     "passport": "^0.3.2",
