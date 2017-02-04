@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+  <ul>
+  <% for(var i=0; i<workoutList.length; i++) {%>
+   <a href=<%="/workout/" + workoutList[i].name%>><h4 class="workout-title"><%= workoutList[i].name %></h4></a>
+   <li><%= workoutList[i].equipment %></li>
+   <li><%= workoutList[i].bodyParts %></li>
+  <% } %>
+  </ul>
   <p> list of all the current excersises</p>
-    
         <% if(message) { %>
           <div class="error-div"> 
           <%=message %>

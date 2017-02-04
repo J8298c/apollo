@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>User delete page</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1> Members you might know </h1>
+    <%for(let i = 0; i < users.length; i++){%>
+     <ul>
+        <img src="http://fillmurray.com/300/300" alt="Bill Murray filler photo" />
+        <h6><%=users[i].name%></h6>
+    </ul>
+    <%}%>
+    <p>Go to your profile</p>
+  </body>
+</html>

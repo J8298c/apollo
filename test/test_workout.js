@@ -141,14 +141,7 @@ describe('Testing API Endpoints', function(){
         let res;
         chai.request(app)
         .post('/workout/create', {name: 'deleteMe', equipment:faker.company.bsNoun(), bodyParts: [faker.commerce.product(), faker.commerce.product()]})
-        // .then(_res =>{
-        //   res = _res;
-        //   res.should.have.status(200);
-        //   res.should.be.json;
-        //   res.should.be.a('object');
-        //   res.should.include.keys('name', 'email', 'password');
-        //   assert.equal(count, 7);
-        // })
+
         it('should find newly created workout and delete from DB', ()=>{
           let res;
           chai.request(app)

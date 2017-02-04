@@ -30,11 +30,28 @@ router.get('/create',function(req, res, next){
 });
 
 router.get('/', function(req, res, next){
-    res.render('workout/index', {message: null});
+    let workoutList;
+    Workout.find({},function(err, workouts, workoutName){
+        if(err){
+           console.log('you have an error') 
+        } else {
+            
+            res.render('workout/index', {workoutList:workouts, message: null});
+        }
+        console.log(req.body);
+    })
+    // res.render('workout/index', {workoutList: res.params, message: null});
 });
 
 router.get('/:workoutname', function (req, res, next) {
-    res.render('workout/show', {name: req.params.workoutname});
+    Workout.findOne({name: req.params.workoutname}, function(err, workout){
+       if(err){
+           handleError(err);
+       } else {
+            console.log(req.body);
+         res.render('workout/show', {name: workout.name, bodyParts: workout.bodyParts, equipment: workout.equipment});
+       }
+    })
 });
 //for put rquest need a {get} to serve template
 //also put to submit to information to server
@@ -65,7 +82,7 @@ router.post('/create', function (req, res){
                 bodyParts: partsOfBody,
                 equipment: equipment
             })
-            console.log(req.body);
+            console.log('Im saving to ');
     })
 });
 
@@ -83,7 +100,15 @@ router.put('/:workoutname/update',function(req, res){
 
 //deletes user from DB and renders login page
 router.delete('/:workoutname/remove', function(req, res){
-    res.render('workout/index', {message: null});
+     Workout.find({},function(err, workouts, workoutName){
+        if(err){
+           console.log('you have an error') 
+        } else {
+            
+            res.render('workout/index', {workoutList:workouts, message: null});
+        }
+        console.log(req.body);
+    });
     Workout.findOneAndRemove({ 'name': req.params.workoutname}, function(err, workout){
         if (err) return handleError(err);
         console.log('deleted it')

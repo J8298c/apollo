@@ -13,11 +13,11 @@
     <div class="indvidual-gym-text">
     <ul>
     <% for(var i = 0; i < bodyParts.length; i++){ %>
-      <li><%=bodyParts[i] %></li>
-    <%} %>
+      <li><%= bodyParts[i] %></li>
+    <% } %>
     </ul>
     </div>
-    <p class="equipment"><%=equipment %></p>
+    <p class="equipment"><%= equipment %></p>
     <a href=<%="/workout/" + name + "/edit" %>>Edit this workout</a>
     <a href=<%="/workout/" + name + "/remove" %>>Delete this workout</a>
   </body>

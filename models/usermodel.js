@@ -35,12 +35,14 @@ const userSchema = new mongoose.Schema({
 //need to validate name and username display name can have spaces username no spaces and no special charcters,
 //find middleware to validate js to take username and make it http friendly 
 const User = mongoose.model('User', userSchema);
-
+console.log('current enviorment', process.env.NODE_ENV);
 if(process.env.NODE_ENV === 'production'){
-    mongoose.createConnection(APOLLO_PRODUCTION_DATABASE);
+    mongoose.connect(APOLLO_PRODUCTION_DATABASE);
 } else {
-    mongoose.createConnection(APOLLO_TEST_DATABASE);
+    console.log('using', APOLLO_TEST_DATABASE);
+    mongoose.connect(APOLLO_TEST_DATABASE);
 }
+// mongoose.createConnection('mongodb://localhost/apollo');
 
 
 userSchema.plugin(uniqueValidator);

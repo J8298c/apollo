@@ -93,10 +93,23 @@ router.get('/loginPage', function(req, res){
     console.log('reached log in page');
 });
 //if calling get request ensure the redirect is before the actual authentication get req
-router.get('/:name', failureRoute, function (req, res, next){
+router.get('/:name', function (req, res, next){
     res.render('users/profile', {name: req.params.name});
 });
 
+router.get('/:name/showall', function(req, res, next){
+    User.find({},function(err, friends){
+        if(err){
+           console.log('you have an error') 
+        } else {
+            res.render('users/all', {users: friends});
+        }
+    });
+});
+
+router.get('/profile', function(req, res, next){
+    res.render('users/profile', {name: req.params.name});
+});
 //renders page to let user edit thier profile
 //username is unique and therefore uneditable
 router.get('/:name/edit', failureRoute, function(req, res, next){
@@ -109,13 +122,16 @@ router.get('/:name/delete', failureRoute, function(req, res, next){
 });
 
 //post route to create new users
-router.post('/register', failureRoute, function(req, res){
+router.post('/register', function(req, res){
     let name = req.body.name;
     name = name.replace(/\s/g,"");
     const user = new User({name: name, email: req.body.email, password: req.body.password});
+    console.log('saving your user')
     user.save(function(err){
-        if(err)
-        res.send(err);
+        if(err){
+            res.send(err);
+            console.log('hit a snag')
+        }
         res.render('users/profile', {name: name});
     })
 });
@@ -143,9 +159,6 @@ router.delete('/:name/remove', failureRoute, function(req, res){
     User.findOneAndRemove({ 'name': req.params.name }, function(err, user){
         if (err) return handleError(err);
     })
-});
-router.get('/profile', function(req, res, next){
-    res.render('users/profile', {name: req.params.name});
 });
 
 //login Authentication
