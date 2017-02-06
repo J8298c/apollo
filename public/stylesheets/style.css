@@ -48,45 +48,60 @@
 }
 
 /*Login-Page*/
-.login-container{
+.login-container {
   width: 100%;
-  background-color: #00A9F4;
+  background-color: #24313C;
+  color: #1AB188;
 }
-.login-container h1{
-  margin-bottom: 55px;
+.login-container h1, .login-container h3 {
   text-align: center;
-  margin-top: 25px;
 }
-.loginDiv, .registration-form{
-  width: 65%;
-  margin: 0 auto;
-  background-color: #EFEFEF;
-  height: 325px;
-  border: 1px solid #EFEFEF;
-  border-radius: 7px;
+.login-container h3 {
+  font-size: 28px;
 }
-.login-username, .new-user-name, .login-password, .new-user-email, .new-user-password {
-  width: 90%;
-  border: 1px solid black;
+.login-username{
+  width: 75%;
+  background-color: #24313C;
+  border: 1px solid #1AB188;
+  margin-top: 15px;
+  height: 25px;
+  margin-left: 30px;
+  border-radius: 8px;
+  padding-left: 10px;
+}
+.login-password {
+  width: 75%;
+  background-color: #24313C;
+  border: 1px solid #1AB188;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  height: 25px;
+  margin-left: 30px;
+  border-radius: 8px;
+  padding-left: 10px;
+}
+.login-submit{
+  width: 45%;
+  background-color: #1AB188;
+  border: 1px solid #1AB188;
+  color: #24313C;
+  font-size: 17px;
   border-radius: 5px;
-  margin-top: 25px;
-  margin-left: 10px;
+  display: block;
+  margin: 0 auto;
+}
+ ::-webkit-input-placeholder {
+  color: #1AB188;
+  font-size: 17px;
+}
+.register-link {
+  color: #1AB188;
+}
+.register-link a {
+ color: #C8D9E2;
+ text-decoration: none;
 }
 
-.login-submit, .submitbtn{
-  background-color: #00A9F4;
-  border: 1px solid #00A9F4;
-  color: #FFCE5F;
-  margin-top: 25px;
-  margin-right: 20px;
-  width: 20%;
-  border-radius: 4px;
-  margin-left: 170px;
-}
-.register-link{
-  font-size: 15px;
-  margin-top: 55px;
-}
 /*registration page*/
 .registration-page {
   width: 100%;
@@ -116,4 +131,4 @@
    background-color: #00A9F4;
    color: #EFEFEF;
 }
-
+/*All Users Page*/
