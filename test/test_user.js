@@ -34,7 +34,7 @@ function seedData(){
 }
 
 
-//after each endpoint test erase DB to start fresh
+// after each endpoint test erase DB to start fresh
 function eraseDB() {
   return new Promise((resolve, reject) => {
     console.warn('Deleting database');
