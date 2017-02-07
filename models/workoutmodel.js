@@ -25,7 +25,7 @@ const Workout = mongoose.model('Workout', apolloSchema);
 if(process.env.NODE_ENV === 'production'){
     mongoose.createConnection(APOLLO_PRODUCTION_DATABASE);
 } else {
-    mongoose.createConnection('mongodb://localhost/apollo');
+    mongoose.connection('mongodb://localhost/apollo');
 }
 
 
