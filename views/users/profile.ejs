@@ -6,13 +6,20 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body class="profile-container">
-    <img src="/images/userimage.png" alt="user image for user homepage" class="user-page-userimage">
+    <img src="/images/begreat.jpg" alt="user image for user homepage" class="user-page-userimage">
     <p class="user-page-welcome-message username">Welcome <%=name %></p>
     <div class="user-page-list-options">
-    <p>Mauris porttitor interdum nibh non vulputate. In vel euismod ipsum, in tincidunt tellus. Pellentesque sed massa at ante auctor hendrerit ut quis felis. Aliquam non eros vestibulum, convallis nisl id, maximus lacus. Proin odio libero, varius sit amet lacus sed, condimentum accumsan nibh. Morbi ullamcorper turpis elit, eget cursus lectus vulputate nec. In venenatis consequat justo vel eleifend. Aliquam vitae nibh at sem mattis facilisis in sed diam. Maecenas faucibus cursus neque, vitae tincidunt metus eleifend nec. Curabitur nunc metus, ornare ullamcorper pellentesque ac, iaculis quis dui. Cras vulputate congue auctor. Phasellus tristique tempor dolor eu iaculis. Nullam ac dui at nulla pellentesque eleifend eu vitae urna.</p>
+    <ul>
+      <li>Height: <span class="personal-gains">5'10<span></li>
+      <li>Weight: <span class="personal-gains">200<span></li>
+      <li>Favorite Workout: <span class="personal-gains">Bench-Press<span></li>
+      <li>Personal-Record: <span class="personal-gains">365Lbs<span></li>
+    </ul>
+    <blockquote class="personal-quote">'Never give up on your dreams'</blockquote>
     </div>
-    <a href=<%="/users/" + name + "/edit" %>>Edit your profile</a>
-    <a href=<%="/users/" + name + "/delete" %>>Delete your profile</a>
-    <a href=<%="/users/" + name + "/showall"%>>See all the users in your area</a>
+    <a href=<%="/users/" + name + "/edit" %>><p class="edit">Edit your profile</p></a>
+    <a href=<%="/users/" + name + "/delete" %>><p class="delete">Delete your profile</p></a>
+    <a href=<%="/users/" + name + "/showall"%>><p class="all-users">See all the users in your area</p></a>
+    <a href="/workout/">View Workouts</a>
   </body>
 </html>

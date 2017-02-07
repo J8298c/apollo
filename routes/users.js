@@ -112,12 +112,12 @@ router.get('/profile', function(req, res, next){
 });
 //renders page to let user edit thier profile
 //username is unique and therefore uneditable
-router.get('/:name/edit', failureRoute, function(req, res, next){
+router.get('/:name/edit', function(req, res, next){
     res.render('users/edit', {name: req.params.name});
 });
 
 //get request that renders the delete template
-router.get('/:name/delete', failureRoute, function(req, res, next){
+router.get('/:name/delete', function(req, res, next){
     res.render('users/delete', {name: req.params.name});
 });
 
@@ -136,7 +136,7 @@ router.post('/register', function(req, res){
     })
 });
 
-router.put('/:name/update', failureRoute, function(req, res, next){
+router.put('/:name/update', function(req, res, next){
     let email = req.body.email;
     let errorEmail;
     if(validEmailCheck(email)){
@@ -154,7 +154,7 @@ router.put('/:name/update', failureRoute, function(req, res, next){
     }
 });
 
-router.delete('/:name/remove', failureRoute, function(req, res){
+router.delete('/:name/remove', function(req, res){
     res.render('users/index', {});
     User.findOneAndRemove({ 'name': req.params.name }, function(err, user){
         if (err) return handleError(err);

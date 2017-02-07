@@ -6,7 +6,7 @@
     <title></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
+  <body class="workout-edit-container">
     <form action=<%= "/workout/" + name + "/update?_method=PUT"%> method="POST">
     <h1>Edit your workout<h1>
     <input class="new-workout-name" placeholder="New Workout Name" type="text" name="workout" value=<%="" + name + "" %>>
@@ -22,7 +22,7 @@
     <input type="checkbox" name="bodyParts" value="quadriceps" class="bodyparts">Quadriceps
     <input type="checkbox" name="bodyParts" value="shoulder" class="bodyparts">Shoulder
     </fieldset>
-    <button class="submit">Submit</button>
+    <button class="submitbtn">Submit</button>
     </form>
   </body>
 </html>

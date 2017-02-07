@@ -48,7 +48,7 @@
 }
 
 /*Login-Page*/
-.login-container {
+.login-container, .registration-page, .profile-container, .delete-container, .all-users-container, .all-workouts-container, .workout-profile-container, .workout-edit-container, .workout-delete-container {
   width: 100%;
   background-color: #24313C;
   color: #1AB188;
@@ -59,7 +59,7 @@
 .login-container h3 {
   font-size: 28px;
 }
-.login-username{
+.login-username, .login-password, .new-user-name, .new-user-email, .new-user-password, .new-workout-name, .new-equipment{
   width: 75%;
   background-color: #24313C;
   border: 1px solid #1AB188;
@@ -68,19 +68,11 @@
   margin-left: 30px;
   border-radius: 8px;
   padding-left: 10px;
+  color: white;
+  font-size: 19px;
 }
-.login-password {
-  width: 75%;
-  background-color: #24313C;
-  border: 1px solid #1AB188;
-  margin-top: 15px;
-  margin-bottom: 20px;
-  height: 25px;
-  margin-left: 30px;
-  border-radius: 8px;
-  padding-left: 10px;
-}
-.login-submit{
+
+.login-submit, .submitbtn{
   width: 45%;
   background-color: #1AB188;
   border: 1px solid #1AB188;
@@ -97,38 +89,62 @@
 .register-link {
   color: #1AB188;
 }
-.register-link a {
- color: #C8D9E2;
+.register-link a, .profile-container a, .all-users-container a {
+ color: #E0E0E0;
  text-decoration: none;
 }
 
 /*registration page*/
-.registration-page {
-  width: 100%;
-  background-color: #00A9F4;
+.new-user-name{
+  margin-top: 70px;
 }
-.registration-form {
-  margin-top: 125px;
+.submitbtn, .login-submit {
+  margin-top: 20px;
 }
-
-/*profile-page*/
-.username{
-  font-size: 34px;
-  text-align: center;
-}
-.user-page-userimage{
-  margin: 0 auto;
+/*profile page */
+.user-page-userimage, .all-users-container img, .workout-profile-container img{
+  height: 200px;
+  width: 200px;
   display: block;
-  border-radius: 50%;
+  margin: 0 auto;
+  border: 1px solid #1AB188;
+  margin-top: 25px;
 }
-.profile-container{
-  width: 100%;
-  margin: 0;
-  background-color: #FFCE5F;
+.username, .workout-name {
+  font-size: 22px;
 }
 
-.user-page-list-options{
-   background-color: #00A9F4;
-   color: #EFEFEF;
+.personal-gains{
+  font-weight: 600;
+  color: #FFF176;
 }
-/*All Users Page*/
+.personal-quote{
+  color: #FFF176;
+  font-weight: 300;
+}
+.edit, .delete, .all-users{
+  width: 100%;
+  text-align: center;
+  margin-top: 15px;
+}
+.profile-container li {
+  list-style-type: none;
+}
+.all-users-container h1, .all-users-container h6{
+  text-align: center;
+  font-size: 26px;
+}
+.all-workouts-container ul, .workout-profile-container li {
+  list-style-type: none;
+  margin-left: 15px;
+}
+.all-workouts-container a, .workout-profile-container a{
+  color: #FFF176;
+}
+.bodyparts{
+  max-width: 100%;
+  font-size: 19px;
+}
+.workout-edit-container fieldset{
+  margin-top: 20px;
+}
