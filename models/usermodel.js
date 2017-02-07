@@ -40,7 +40,7 @@ if(process.env.NODE_ENV === 'production'){
     mongoose.connect(APOLLO_PRODUCTION_DATABASE);
 } else {
     console.log('using', APOLLO_TEST_DATABASE);
-    mongoose.createConnection('mongodb://localhost/apollo');
+    mongoose.Connection('mongodb://localhost/apollo');
 }
 
 
