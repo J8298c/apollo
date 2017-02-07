@@ -95,9 +95,6 @@ router.put('/:workoutname/update',function(req, res){
         console.log('updated it')
     });
 });
-//stop changing names and stay consistent
-//think how the change will affect your code
-
 //deletes user from DB and renders login page
 router.delete('/:workoutname/remove', function(req, res){
      Workout.find({},function(err, workouts, workoutName){
