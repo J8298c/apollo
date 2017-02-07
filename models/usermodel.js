@@ -37,10 +37,10 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 console.log('current enviorment', process.env.NODE_ENV);
 if(process.env.NODE_ENV === 'production'){
-    mongoose.connect(APOLLO_PRODUCTION_DATABASE);
+    mongoose.createConnection(APOLLO_PRODUCTION_DATABASE);
 } else {
     console.log('using', APOLLO_TEST_DATABASE);
-    mongoose.connection('mongodb://localhost/apollo');
+    mongoose.createConnection(APOLLO_TEST_DATABASE);
 }
 
 
