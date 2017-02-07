@@ -27,6 +27,6 @@ if(process.env.NODE_ENV === 'production'){
 } else {
     mongoose.createConnection('mongodb://localhost/apollo');
 }
-// mongoose.connect('mongodb://localhost/apollo')
+
 
 module.exports = {Workout};

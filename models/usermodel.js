@@ -42,7 +42,7 @@ if(process.env.NODE_ENV === 'production'){
     console.log('using', APOLLO_TEST_DATABASE);
     mongoose.connect('mongodb://localhost/apollo');
 }
-// mongoose.createConnection('mongodb://localhost/apollo');
+
 
 
 userSchema.plugin(uniqueValidator);
