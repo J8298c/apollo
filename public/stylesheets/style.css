@@ -1,110 +1,141 @@
-/*Login-Page*/
-.login-container, .registration-page, .profile-container, .delete-container, .all-users-container, .all-workouts-container, .workout-profile-container, .workout-edit-container, .workout-delete-container, .splashpage {
+.login-container, .registration-page, .profile-container, .delete-container, .all-users-container, .all-workouts-container, .workout-profile-container, .workout-edit-container, .workout-delete-container, .splashpage, .edit-profile, .delete-container {
   width: 100%;
   background-color: #24313C;
   color: #1AB188;
-}
-.login-container h1, .login-container h3 {
-  text-align: center;
-}
-.login-container h3 {
-  font-size: 28px;
-}
-.login-username, .login-password, .new-user-name, .new-user-email, .new-user-password, .new-workout-name, .new-equipment{
-  width: 75%;
-  background-color: #24313C;
-  border: 1px solid #1AB188;
-  margin-top: 15px;
-  height: 25px;
-  margin-left: 30px;
-  border-radius: 8px;
-  padding-left: 10px;
-  color: white;
-  font-size: 19px;
-}
-
-.login-submit, .submitbtn, .login-button{
-  width: 45%;
-  background-color: #1AB188;
-  border: 1px solid #1AB188;
-  color: #24313C;
-  font-size: 17px;
-  border-radius: 5px;
   display: block;
-  margin: 0 auto;
-}
- ::-webkit-input-placeholder {
-  color: #1AB188;
-  font-size: 17px;
-}
-.register-link {
-  color: #1AB188;
-}
-.register-link a, .profile-container a, .all-users-container a {
- color: #E0E0E0;
- text-decoration: none;
-}
-
-/*registration page*/
-.new-user-name{
-  margin-top: 70px;
-}
-.submitbtn, .login-submit {
-  margin-top: 20px;
-}
-/*profile page */
-.user-page-userimage, .all-users-container img, .workout-profile-container img{
-  height: 200px;
-  width: 200px;
-  display: block;
-  margin: 0 auto;
-  border: 1px solid #1AB188;
-  margin-top: 25px;
-}
-.username, .workout-name {
-  font-size: 22px;
-}
-
-.personal-gains{
-  font-weight: 600;
-  color: #FFF176;
-}
-.personal-quote{
-  color: #FFF176;
-  font-weight: 300;
-}
-.edit, .delete, .all-users{
-  width: 100%;
-  text-align: center;
-  margin-top: 15px;
-}
-.profile-container li {
-  list-style-type: none;
-}
-.all-users-container h1, .all-users-container h6{
-  text-align: center;
-  font-size: 26px;
-}
-.all-workouts-container ul, .workout-profile-container li {
-  list-style-type: none;
-  margin-left: 15px;
-}
-.all-workouts-container a, .workout-profile-container a{
-  color: #FFF176;
-}
-.bodyparts{
-  max-width: 100%;
-  font-size: 19px;
-}
-.workout-edit-container fieldset{
-  margin-top: 20px;
 }
 .splashpage-title{
-  font-size: 60px;
-  font-weight: bolder;
-  text-align: center;
+    text-align: center;
+    font-size: 150px;
+    color: #24313C;
+   -webkit-text-stroke: 1px #1AB188;
 }
 .splash-page-bottom{
-  margin-top: 350px;
-  text-align: center;
+    text-align: center;
+    margin-top: 55px;
+    font-size: 33px;
+    margin-bottom: 55px;
+}
+.login-button, .login-submit, .submitbtn {
+    width: 200px;
+    height: 40px;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #FFF176;
+    background-color: #FFF176;
+    border-radius: 15px;
+    font-size: 15px;
+    color: #24313C;
+}
+.splashpage a {
+    text-decoration: none;
+}
+/*login-page style */
+.login-container h1 {
+    text-align: center;
+    font-size: 55px;
+}
+.loginDiv {
+    display: block;
+    margin: 0 auto;
+    width: 35%;
+}
+.loginDiv h3 {
+    text-align: center;
+    font-size: 25px;
+}
+.login-username, .login-password, .new-user-name, .new-user-email, .new-user-password, .user-name, .new-user-email {
+    width: 80%;
+    margin-bottom: 20px;
+    border: 2px solid #FFF176;
+    background-color: #24313C;
+    border-radius: 10px;
+    height: 30px;
+    margin-left: 35px;
+    padding-left: 15px;
+    color: #FFF176;
+    font-size: 19px;
+}
+input::-webkit-input-placeholder {
+	font-size: 19px;
+    color: #FFF176;
+}
+input::-moz-placeholder {
+	font-size: 19px;
+    color: #FFF176;
+}
+input:-moz-placeholder {   /* Older versions of Firefox */
+	font-size: 19px;
+    color: #FFF176;
+}
+input:-ms-input-placeholder { 
+	font-size: 19px;
+    color: #FFF176;
+}
+.register-link {
+    font-size: 25px;
+    margin-top: 70px;
+}
+.register-link a {
+    color: #FFF176;
+}
+/* Registration */
+.registration-page {
+    max-width: 100%;
+}
+.registration-page form {
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #1AB188;
+    margin-top: 130px;
+    height: 35%;
+    padding-top: 25px;
+    border: 1px solid #1AB188;
+    border-radius: 8px;
+    padding-bottom: 25px;
+}
+.registration-page h1 {
+    text-align: center;
+    font-size: 55px;
+}
+.profile-container img {
+    width: 300px;
+    height: 300px;
+    margin-left: 38%;
+    border: 1px solid #FFF176;
+    border-radius: 15px;
+    margin-top: 25px;
+} 
+.username{
+    text-align: center;
+    font-size: 34px;
+}
+.user-page-list-options {
+    width: 65%;
+    margin: 0 auto;
+}
+.user-page-list-options li {
+    list-style-type: none;
+    text-align: center;
+}
+.personal-quote{
+    text-align: center;
+    font-size: 25px;
+}
+.profile-options{
+    width: 100%;
+    margin-left: 25%;
+}
+.edit, .delete, .all-users, .workout-view{
+    float: left;
+    margin-left: 30px;
+    color: #FFF176;
+}
+.workout-view{
+    margin-top: 15px;
+    text-decoration: none;
+}
+.workout-view a{
+    color: #FFF176;
 }

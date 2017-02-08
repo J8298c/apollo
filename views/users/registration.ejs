@@ -3,13 +3,15 @@
   <head>
   <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>New User</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/mobile.css' media="(max-width: 650px)" />
+    <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
   <body class="registration-page">
+  <h1>Welcome to Apollo</h1>
   <!--will be sent as req.body-->
     <form action="/users/register" method="POST" class="registration-form">
-    <input type="text" placeholder="username" name="name" class="new-user-name">
-    <input type="text" placeholder="email" name="email" class="new-user-email">
+    <input type="text" placeholder="Username" name="name" class="new-user-name">
+    <input type="text" placeholder="Email" name="email" class="new-user-email">
     <input type="password" placeholder="Create Password" name="password" class="new-user-password">
     <button type="submit" class="submitbtn">Submit</button>
     </form>
