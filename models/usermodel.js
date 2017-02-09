@@ -41,7 +41,7 @@ if(process.env.NODE_ENV === 'production'){
     console.log('using', APOLLO_PRODUCTION_DATABASE);
 } else {
     console.log('using', APOLLO_TEST_DATABASE);
-    mongoose.connect(APOLLO_TEST_DATABASE);
+    mongoose.createConnection(APOLLO_TEST_DATABASE);
 }
 
 
