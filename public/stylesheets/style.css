@@ -139,10 +139,3 @@ input:-ms-input-placeholder {
     color: #FFF176;
 }
 /* Users You may know */
-
-
-.users-list img {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto;
-}
