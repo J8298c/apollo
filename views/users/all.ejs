@@ -8,12 +8,15 @@
   </head>
   <body class="all-users-container">
     <h1> Members you might know </h1>
+    <div class="users-list">
     <%for(let i = 0; i < users.length; i++){%>
      <ul>
-        <img src="http://fillmurray.com/300/300" alt="Bill Murray filler photo" />
+        <img src="http://fillmurray.com/300/300" alt="Bill Murray filler photo" class="allusers" />
         <h6><%=users[i].name%></h6>
     </ul>
     <%}%>
+    </div>
     <p>Go to your profile</p>
+
   </body>
 </html>
