@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <!--how to load this file and then create my post request on submit-->
   <meta name="viewport" content="width=device-width,initial-scale=1">
     <title></title>
     <link rel='stylesheet' href='/stylesheets/mobile.css' media="(max-width: 650px)" />
     <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
-  <body>
+  <body class="create-workout-container">
     <form action="/workout/create" method="POST">
-    <input type="text" placeholder="workout name" name="workout">
-    <input type="text" placeholder="equipment" name="equipment">
+    <input type="text" placeholder="workout name" name="workout" class="create-workout-name">
+    <input type="text" placeholder="equipment" name="equipment" class="create-workout-equipment">
     <fieldset class="bodyparts">
     <legend>BodyPart for excersise</legend>
     <input type="checkbox" name="Back" value="back" class="bodyparts">Back
@@ -22,7 +21,7 @@
     <input type="checkbox" name="Quadriceps" value="quadriceps" class="bodyparts">Quadriceps
     <input type="checkbox" name="Shoulder" value="shoulder" class="bodyparts">Shoulder
     </fieldset>
-    <button type="submit">Submit</button>
+    <button type="submit" class="create-workout-submit">Submit</button>
     </form>
   </body>
 </html>

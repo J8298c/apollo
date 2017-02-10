@@ -8,18 +8,22 @@
   </head>
   <body class="workout-profile-container">
   <img src="/images/userimage.png" alt="user image for user homepage" class="excersise-image">
+  <div class="ind-workout">
   <h1 class="workout-name"><%=name %></h1>
     <!--set up divs to contain images of workout along with description and name of workout 
     insert for loop to go through workout obj--> 
     <div class="indvidual-gym-text">
     <ul>
+        <div class="workoutInd">
     <% for(var i = 0; i < bodyParts.length; i++){ %>
       <li><%= bodyParts[i] %></li>
     <% } %>
+        </div>
     </ul>
     </div>
     <p class="equipment"><%= equipment %></p>
-    <a href=<%="/workout/" + name + "/edit" %>>Edit this workout</a>
-    <a href=<%="/workout/" + name + "/remove" %>>Delete this workout</a>
+    <a class="edit-workout" href=<%="/workout/" + name + "/edit" %>>Edit this workout</a>
+    <a class="delete-workout" href=<%="/workout/" + name + "/remove" %>>Delete this workout</a>
+      </div>
   </body>
 </html>

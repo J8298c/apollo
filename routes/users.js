@@ -175,11 +175,4 @@ module.exports = router;
 
 
 
-//enum pages and make pages private resaerch how to use passport to close all routes unless user is autheticated..
-
-
-//making resources private with Authentication using passport/express
-//create USER 
-//attending my first meetup
-//
 

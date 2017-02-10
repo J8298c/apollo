@@ -1,4 +1,4 @@
-.login-container, .registration-page, .profile-container, .delete-container, .all-users-container, .all-workouts-container, .workout-profile-container, .workout-edit-container, .workout-delete-container, .splashpage, .edit-profile, .delete-container {
+.login-container, .registration-page, .profile-container, .delete-container, .all-users-container, .all-workouts-container, .workout-profile-container, .workout-edit-container, .workout-delete-container, .splashpage, .edit-profile, .delete-container, .create-workout-container {
   width: 100%;
   background-color: #24313C;
   color: #1AB188;
@@ -16,7 +16,7 @@
     font-size: 33px;
     margin-bottom: 55px;
 }
-.login-button, .login-submit, .submitbtn {
+.login-button, .login-submit, .submitbtn, .create-workout-submit {
     width: 200px;
     height: 40px;
     display: block;
@@ -44,7 +44,7 @@
     text-align: center;
     font-size: 25px;
 }
-.login-username, .login-password, .new-user-name, .new-user-email, .new-user-password, .user-name, .new-user-email {
+.login-username, .login-password, .new-user-name, .new-user-email, .new-user-password, .user-name, .new-user-email, .create-workout-equipment, .create-workout-name {
     width: 80%;
     margin-bottom: 20px;
     border: 2px solid #FFF176;
@@ -99,25 +99,29 @@ input:-ms-input-placeholder {
     text-align: center;
     font-size: 55px;
 }
-.profile-container img {
+
+/*profile Page */
+
+.profile-container img, .excersise-image {
     width: 300px;
     height: 300px;
-    margin-left: 38%;
+    margin-left: 43%;
     border: 1px solid #FFF176;
     border-radius: 15px;
     margin-top: 25px;
 } 
-.username{
+.username,  .workout-name{
     text-align: center;
     font-size: 34px;
 }
-.user-page-list-options {
-    width: 65%;
+.user-page-list-options, .workoutInd {
+    width: 50%;
     margin: 0 auto;
 }
-.user-page-list-options li {
+.user-page-list-options li, .workoutInd li, .equipment {
     list-style-type: none;
     text-align: center;
+    
 }
 .personal-quote{
     text-align: center;
@@ -127,7 +131,12 @@ input:-ms-input-placeholder {
     width: 100%;
     margin-left: 25%;
 }
-.edit, .delete, .all-users, .workout-view{
+.edit{
+    margin-left: 10%;
+    color: #FFF176;
+    float: left;
+}
+.delete, .all-users, .workout-view, .edit-workout, .delete-workout{
     float: left;
     margin-left: 30px;
     color: #FFF176;
@@ -138,4 +147,33 @@ input:-ms-input-placeholder {
 .workout-view a{
     color: #FFF176;
 }
-/* Users You may know */
+/* Edit Page */
+
+.user-name, .new-user-password, .new-user-email, .create-workout-equipment, .create-workout-name {
+    width: 45%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.delete-container h3 {
+    text-align: center;
+    font-size: 45px
+}
+
+/*
+    ==================Workout Styles ========================
+                                                                */
+
+.bodyparts{
+    width: 45%;
+    display: block;
+    margin: 0 auto;
+}
+.create-workout-submit {
+    margin-top: 25px;
+}
+.delete-workout, .edit-workout{
+    margin-left: 45%;
+    text-decoration: none;
+    text-align: center;
+}
