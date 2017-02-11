@@ -7,14 +7,15 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
   <body class="all-workouts-container">
-  <ul>
+  
   <% for(var i=0; i<workoutList.length; i++) {%>
+  <ul>
    <a href=<%="/workout/" + workoutList[i].name%>><h4 class="workout-title"><%= workoutList[i].name %></h4></a>
    <li><%= workoutList[i].equipment %></li>
    <li><%= workoutList[i].bodyParts %></li>
+   </ul>
   <% } %>
-  </ul>
-  <p> list of all the current excersises</p>
+  <a href='/workout/create' class="add-workout">Add New Workout</a>
         <% if(message) { %>
           <div class="error-div"> 
           <%=message %>

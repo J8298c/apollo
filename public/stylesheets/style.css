@@ -177,3 +177,35 @@ input:-ms-input-placeholder {
     text-decoration: none;
     text-align: center;
 }
+.allworkouts-container {
+    max-width: 100%;
+}
+.all-workouts-container ul {
+    border: 1px solid #FFF176;
+    width: 43%;
+    display: inline-block;
+    margin-left: 15px;
+    list-style-type: none;
+    -webkit-box-shadow: -2px 9px 11px -9px rgba(0,0,0,0.75);
+    -moz-box-shadow: -2px 9px 11px -9px rgba(0,0,0,0.75);
+    box-shadow: -2px 9px 11px -9px rgba(0,0,0,0.75);
+}
+.all-workouts-container li {
+    margin-bottom: 10px;
+}
+.all-workouts-container a {
+    color: #1AB188;
+    text-decoration: none;
+    cursor: grab;
+}
+.add-workout{
+    float: left;
+    margin-left: 40%;
+    font-size: 28px;
+}
+.workout-title{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
