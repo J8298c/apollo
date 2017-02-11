@@ -3,7 +3,9 @@ Apollo Workout Logger
 Current Version Alpha 
 
 <h1>Welcome to Apollo</h1>
- the fitness logger which lets you create, and edit your own workouts. To begin all you need to do is go to <a href="https://ancient-hollows-78463.herokuapp.com/"> and Register to begin. 
+ the fitness logger which lets you create, and edit your own workouts. To begin all you need to do is go to 
+<a href="https://ancient-hollows-78463.herokuapp.com/">Apollo</a>
+ and Register to begin. 
 
 After registering feel free to browse around the app, your profile page gives your access to every part of <strong>Apollo</strong>. From here you can go to see other users in your area, edit your email or password, you can also access the workouts page and see the current workouts users have saved. 
 
@@ -21,4 +23,7 @@ Apollo is still in its early version and I include to add many new features to i
 	<li>Mongoose</li>
 	<li>Passport Local</li>
 	<li>Express</li>
+	<li>Mocha</li>
+	<li>Chai</li>
 </ul>
+
