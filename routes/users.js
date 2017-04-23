@@ -17,7 +17,7 @@ passport.serializeUser(function(user, done) {
   console.log(user);
 });
 
-passport.deserializeUser(function(id, done) {
+passport.deserializeUser(function(name, done) {
   User.findOne({name: name}, function(err, user) {
     done(err, user);
   });
@@ -35,27 +35,22 @@ router.use(function(req, res, next){
 });
 
 //passport middleware
-passport.use(new LocalStrategy({
+passport.use('local-login', new LocalStrategy({
     usernameField: 'name',
     passwordField: 'password'
 },
 function(username, password, done){
-    console.log('finding user');
     User.findOne({'name': username}, function(err, user){
-        console.log('current user');
-        console.log(username)
         if(err){
             return done(err);
         }
         if(!user) {
             return done(null, false, {message: 'You entered the wrong user name please try again'});
         }
-        // if(!user.validPassword(password)){
-        //     return done(null, false, {message: 'Incorrect Password'});
-        // }
+        if(!user.password){
+            return done(null, false, {message: 'Incorrect Password'});
+        }
         return done(null, user);
-        console.log('returning user that just signed in');
-        console.log(user);
         loggedIn(user);
         return user;
     });
@@ -85,7 +80,7 @@ router.get('/', function (req, res, next) {
 });
 
 //renders user profile page
-const failureRoute = passport.authenticate('local', { failureRedirect: '/users/loginPage'});
+const failureRoute = passport.authenticate('local-login', { failureRedirect: '/users/loginPage'});
 
 
 router.get('/loginPage', function(req, res){
@@ -107,7 +102,7 @@ router.get('/:name/showall', function(req, res, next){
     });
 });
 
-router.get('/profile', function(req, res, next){
+router.get('/profile',isLoggedIn,  function(req, res){
     res.render('users/profile', {name: req.params.name});
 });
 //renders page to let user edit thier profile
@@ -119,6 +114,11 @@ router.get('/:name/edit', function(req, res, next){
 //get request that renders the delete template
 router.get('/:name/delete', function(req, res, next){
     res.render('users/delete', {name: req.params.name});
+});
+router.get('/logout', function(req, res) {
+        req.logout();
+        console.log(req.log(), 'whats being called in logout')
+        res.render('users/index');
 });
 
 //post route to create new users
@@ -168,7 +168,11 @@ router.post('/login',
         res.render('users/profile', {name: req.body.name})
     });
 
-
+function isLoggedIn(req, res, next){
+    if (req.isAuthenticated())
+    // if they aren't redirect them to the home page
+    res.render('users/index', {});
+}
 
 
 module.exports = router;

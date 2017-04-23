@@ -44,7 +44,7 @@
     text-align: center;
     font-size: 25px;
 }
-.login-username, .login-password, .new-user-name, .new-user-email, .new-user-password, .user-name, .new-user-email, .create-workout-equipment, .create-workout-name {
+.login-username, .login-password, .new-user-name, .new-user-email, .new-user-password, .user-name, .new-user-email, .create-workout-equipment, .create-workout-name, .new-workout-name, .new-equipment {
     width: 80%;
     margin-bottom: 20px;
     border: 2px solid #FFF176;
@@ -105,10 +105,11 @@ input:-ms-input-placeholder {
 .profile-container img, .excersise-image {
     width: 300px;
     height: 300px;
-    margin-left: 43%;
+    display: block;
     border: 1px solid #FFF176;
     border-radius: 15px;
-    margin-top: 25px;
+    margin: 25px auto;
+
 } 
 .username,  .workout-name{
     text-align: center;
@@ -127,9 +128,10 @@ input:-ms-input-placeholder {
     text-align: center;
     font-size: 25px;
 }
-.profile-options{
+.profile-options {
     width: 100%;
-    margin-left: 25%;
+    display: inline-block;
+    margin-left: 9%;
 }
 .edit{
     margin-left: 10%;
@@ -149,7 +151,7 @@ input:-ms-input-placeholder {
 }
 /* Edit Page */
 
-.user-name, .new-user-password, .new-user-email, .create-workout-equipment, .create-workout-name {
+.user-name, .new-user-password, .new-user-email, .create-workout-equipment, .create-workout-name, .new-workout-name, .new-workout-equipment {
     width: 45%;
     display: block;
     margin-left: auto;
@@ -208,4 +210,134 @@ input:-ms-input-placeholder {
     font-size: 20px;
 }
 
-
+@media screen and (max-width: 750px) {
+    body.splashpage, body.login-container, body.profile-container, body{
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #24313C;
+        display: block;
+    /* color: #24313c; */
+    }
+    .splashpage-title {
+        font-size: 81px;
+        color: #24313C;
+        -webkit-text-stroke: 1px #1AB188;
+        text-align: center;
+    }
+    .splash-page-bottom {
+        text-align: center;
+        margin-top: 55px;
+        font-size: 23px;
+        margin-bottom: 55px;
+        color: #FFF176;
+        margin-left: 15px;
+    }
+    .login-button {
+        width: 200px;
+        height: 40px;
+        display: block;
+        margin: 0 auto;
+        border: 1px solid #FFF176;
+        background-color: #FFF176;
+        border-radius: 15px;
+        font-size: 15px;
+        color: #24313C;
+    /* text-decoration: none; */
+    }
+    .splashpage a {
+        text-decoration: none;
+    }
+    .login-container h1 {
+        font-size: 45px;
+    }
+    .loginDiv {
+        width: 100%;
+    }
+    .loginDiv h3 {
+        font-size: 32px;
+    }
+    .register-link {
+        font-size: 20px;
+        margin-top: 70px;
+        margin-left: 15px;
+    }
+    .registration-page {
+        max-width: 100%;
+        margin: 0;
+    }
+    .registration-page h1 {
+        text-align: center;
+        font-size: 47px;
+    }
+    .registration-page form {
+        width: 91%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #1AB188;
+        margin-top: 115px;
+        height: 35%;
+        padding-top: 25px;
+        border: 1px solid #1AB188;
+        border-radius: 8px;
+        padding-bottom: 25px;
+    }
+    .new-user-email, .new-user-password, .new-user-name, .user-name {
+        width: 82%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .profile-container img {
+        width: 66%;
+        margin: 15px auto;
+        display: block;
+        border: 1px solid #FFF176;
+    }
+    .username {
+        text-align: center;
+        font-size: 39px;
+    }
+    .user-page-list-options {
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+    }
+    .user-page-list-options ul {
+        margin: 0;
+        padding: 0;
+    }
+    .profile-options {
+        width: 100%;
+        margin-left: 8%;
+    }
+    .delete, .all-users, .workout-view, .edit-workout, .delete-workout {
+        float: left;
+        margin-left: 20px;
+        color: #FFF176;
+    }
+    .edit-profile h3 {
+        text-align: center;
+        font-size: 32px;
+    }
+    .user-create-workout form {
+        margin-top: 25%;
+    }
+    .bodyparts {
+        width: 59%;
+        margin: 0 auto;
+    }
+    .indvidual-gym-text ul{
+        margin: 0;
+        padding: 0;
+    }
+    .edit-workout {
+        display: inline-block;
+        width: 50%;
+        margin: 5px auto;
+    }
+    .edit-workout-container h1 {
+        text-align: center;
+        font-size: 70px;
+    }
+}

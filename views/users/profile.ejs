@@ -3,7 +3,6 @@
   <head>
   <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>User-Page</title>
-    <link rel='stylesheet' href='/stylesheets/mobile.css' media="(max-width: 650px)" />
     <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
   <body class="profile-container">
@@ -22,6 +21,7 @@
     <a href=<%="/users/" + name + "/edit" %>><p class="edit">Edit your profile</p></a>
     <a href=<%="/users/" + name + "/delete" %>><p class="delete">Delete your profile</p></a>
     <a href=<%="/users/" + name + "/showall"%>><p class="all-users">See all the users in your area</p></a>
+    <a href=<%="/users/" + name + "/logout" %>><p class="edit">Logout</p></a>
     <a href="/workout/" class="workout-view"><p>View Workouts<p></a>
     </div>
   </body>
