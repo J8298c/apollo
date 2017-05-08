@@ -45,13 +45,26 @@
     font-size: 25px;
 }
 .login-username, .login-password, .new-user-name, .new-user-email, .new-user-password, .user-name, .new-user-email, .create-workout-equipment, .create-workout-name, .new-workout-name, .new-equipment {
-    width: 80%;
     margin-bottom: 20px;
     border: 2px solid #FFF176;
     background-color: #24313C;
     border-radius: 10px;
     height: 30px;
-    margin-left: 35px;
+    padding-left: 15px;
+    color: #FFF176;
+    font-size: 19px;
+    width: 82%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.new-user-name{
+    width: 45%;
+    margin-bottom: 20px;
+    border: 2px solid #FFF176;
+    background-color: #24313C;
+    border-radius: 10px;
+    height: 30px;
     padding-left: 15px;
     color: #FFF176;
     font-size: 19px;
