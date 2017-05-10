@@ -3,11 +3,9 @@ const methodOverride = require('method-override');
 const router = express.Router();
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 const {Workout} = require('../models/workoutmodel');
 router.use(methodOverride('_method'));
-router.use(bodyParser.json())
+
 
 
 //middleware for loging
@@ -33,14 +31,11 @@ router.get('/', function(req, res, next){
     let workoutList;
     Workout.find({},function(err, workouts, workoutName){
         if(err){
-           console.log('you have an error') 
+           console.log('err'); 
         } else {
-            
             res.render('workout/index', {workoutList:workouts, message: null});
         }
-        console.log(req.body);
     })
-    // res.render('workout/index', {workoutList: res.params, message: null});
 });
 
 router.get('/:workoutname', function (req, res, next) {
@@ -48,7 +43,6 @@ router.get('/:workoutname', function (req, res, next) {
        if(err){
            handleError(err);
        } else {
-            console.log(req.body);
          res.render('workout/show', {name: workout.name, bodyParts: workout.bodyParts, equipment: workout.equipment});
        }
     })
@@ -62,19 +56,15 @@ router.get('/:workoutname/remove', function(req, res, next){
     res.render('workout/delete', {name: req.params.workoutname})
 })
 router.post('/create', function (req, res){
-    //creat a copy instead of messing with actual object to illevaite unexpected behaviours//
     const bodyCopy = Object.assign({}, req.body);
-    //object destructure
     const {workout, equipment} = bodyCopy;
-    console.log('im the workout var');
-    console.log(workout);
     delete bodyCopy.workout;
     delete bodyCopy.equipment;
     const partsOfBody = Object.keys(bodyCopy);
     let workoutName = workout.replace(/\s/g,"");
     const workoutObj = new Workout({name: workoutName, equipment: equipment, bodyParts: partsOfBody });
 
-    workoutObj.save(function(err){
+    workoutObj.save(function(err){ //need to fix if/else 
         if(err)
             res.send(err);
             res.render('workout/show', {
@@ -84,32 +74,33 @@ router.post('/create', function (req, res){
             })
             console.log('Im saving to ');
     })
+
 });
 
 router.put('/:workoutname/update',function(req, res){
     res.render('workout/show', {name: req.params.workoutname, bodyParts: req.body.bodyParts, equipment: req.body.equipment});
-    console.log('the req params, workout variable and equipment');
-    console.log(req.params.workoutname, req.body.equipment, req.body.bodyParts);
     Workout.findOneAndUpdate({ 'name': req.body.workoutname }, { 'equipment': req.body.equipment, 'bodyParts': req.body.bodyParts}, {'new': true}, function(err, workingout){
         if(err) return handleError(err)
-        console.log('updated it')
     });
 });
-//deletes user from DB and renders login page
+
+
 router.delete('/:workoutname/remove', function(req, res){
+
      Workout.find({},function(err, workouts, workoutName){
         if(err){
-           console.log('you have an error') 
+           console.log(err) 
         } else {
             
             res.render('workout/index', {workoutList:workouts, message: null});
         }
-        console.log(req.body);
+
     });
+
     Workout.findOneAndRemove({ 'name': req.params.workoutname}, function(err, workout){
         if (err) return handleError(err);
-        console.log('deleted it')
     })
+
 });
 
 

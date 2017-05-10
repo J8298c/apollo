@@ -1,12 +1,10 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const router = express.Router();
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const {User, validEmailCheck} = require('../models/usermodel');
-const jsonParser = bodyParser.json();
+
 
 router.use(methodOverride('_method'));
 router.use(passport.initialize());

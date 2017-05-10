@@ -32,5 +32,9 @@
     "faker": "^3.1.0",
     "mocha": "^3.2.0",
     "nodemon": "^1.11.0"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/J8298c/apollo.git",
+  "author": "j8298c <juliocmojica@gmail.com>",
+  "license": "MIT"
 }
