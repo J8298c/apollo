@@ -1,5 +1,6 @@
 const mongoose = require('mongoose'),
 validator = require('node-mongoose-validator');
+const bcrypt = require('bcrypt-nodejs')
 const uniqueValidator = require('mongoose-unique-validator');
 const {APOLLO_PRODUCTION_DATABASE, APOLLO_TEST_DATABASE} = require('../test/config');
 mongoose.Promise = global.Promise;
@@ -14,38 +15,34 @@ function validEmailCheck(email){
     }
 }
 const userSchema = new mongoose.Schema({
-    name: {
-        type: String, 
-        unique: true,
-        required: true,
-    },
-    password: { 
-        type: String,
-        required: true,
-    },
-    email: {
-        type: String,
-        validate: {
-          validator: validEmailCheck,
-          message: '{VALUE} is not a valid email!'
-        },
-        required: [true, 'Email is required']
-      }
-    });
+  local : {
+      email: String,
+      password: String
+  }
+});
 //need to validate name and username display name can have spaces username no spaces and no special charcters,
 //find middleware to validate js to take username and make it http friendly 
-const User = mongoose.model('User', userSchema);
-console.log('current enviorment', process.env.NODE_ENV);
-if(process.env.NODE_ENV === 'production'){
-    mongoose.connect(APOLLO_PRODUCTION_DATABASE);
-    console.log('using', APOLLO_PRODUCTION_DATABASE);
-} else {
-    console.log('using', APOLLO_TEST_DATABASE);
-    mongoose.createConnection(APOLLO_TEST_DATABASE);
-}
+// console.log('current enviorment', process.env.NODE_ENV);
+// if(process.env.NODE_ENV === 'production'){
+//     mongoose.connect(APOLLO_PRODUCTION_DATABASE);
+//     console.log('using', APOLLO_PRODUCTION_DATABASE);
+// } else {
+//     console.log('using', APOLLO_TEST_DATABASE);
+//     mongoose.createConnection(APOLLO_TEST_DATABASE);
+// }
 
+// generating a hash
+userSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
 
-
+// checking if password is valid
+userSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.local.password);
+};
 userSchema.plugin(uniqueValidator);
 
-module.exports = {User, validEmailCheck};
+const User = mongoose.model('User', userSchema);
+
+
+module.exports = User;

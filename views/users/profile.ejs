@@ -7,7 +7,6 @@
   </head>
   <body class="profile-container">
     <img src="/images/begreat.jpg" alt="user image for user homepage" class="user-page-userimage">
-    <p class="user-page-welcome-message username">Welcome <%=name %></p>
     <div class="user-page-list-options">
     <ul>
       <li>Height: <span class="personal-gains">5'10<span></li>
@@ -16,13 +15,6 @@
       <li>Personal-Record: <span class="personal-gains">365Lbs<span></li>
     </ul>
     <blockquote class="personal-quote">'Never give up on your dreams'</blockquote>
-    </div>
-    <div class="profile-options">
-    <a href=<%="/users/" + name + "/edit" %>><p class="edit">Edit your profile</p></a>
-    <a href=<%="/users/" + name + "/delete" %>><p class="delete">Delete your profile</p></a>
-    <a href=<%="/users/" + name + "/showall"%>><p class="all-users">See all the users in your area</p></a>
-    <a href=<%="/users/" + name + "/logout" %>><p class="edit">Logout</p></a>
-    <a href="/workout/" class="workout-view"><p>View Workouts<p></a>
     </div>
   </body>
 </html>
