@@ -1,22 +1,40 @@
-.login-container, .registration-page, .profile-container, .delete-container, .all-users-container, .all-workouts-container, .workout-profile-container, .workout-edit-container, .workout-delete-container, .splashpage, .edit-profile, .delete-container, .create-workout-container {
+.login-container, 
+.registration-page, 
+.profile-container, 
+.delete-container, 
+.all-users-container, 
+.all-workouts-container, 
+.workout-profile-container, 
+.workout-edit-container, 
+.workout-delete-container, 
+.splashpage, 
+.edit-profile, 
+.delete-container, 
+.create-workout-container {
   width: 100%;
   background-color: #24313C;
   color: #1AB188;
   display: block;
 }
+
 .splashpage-title{
     text-align: center;
     font-size: 150px;
     color: #24313C;
    -webkit-text-stroke: 1px #1AB188;
 }
+
 .splash-page-bottom{
     text-align: center;
     margin-top: 55px;
     font-size: 33px;
     margin-bottom: 55px;
 }
-.login-button, .login-submit, .submitbtn, .create-workout-submit {
+
+.login-button, 
+.login-submit, 
+.submitbtn, 
+.create-workout-submit {
     width: 200px;
     height: 40px;
     display: block;
@@ -35,15 +53,24 @@
     text-align: center;
     font-size: 55px;
 }
-.loginDiv {
-    display: block;
-    margin: 0 auto;
-    width: 35%;
-}
-.loginDiv h3 {
+.login-container h3 {
     text-align: center;
-    font-size: 25px;
+    font-size: 35px;
 }
+
+.login-container form{
+    width: 45%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #1AB188;
+    margin-top: 130px;
+    height: 35%;
+    padding-top: 25px;
+    border: 1px solid #1AB188;
+    border-radius: 8px;
+    padding-bottom: 25px;
+}
+
 .login-username, .login-password, .new-user-name, .new-user-email, .new-user-password, .user-name, .new-user-email, .create-workout-equipment, .create-workout-name, .new-workout-name, .new-equipment {
     margin-bottom: 20px;
     border: 2px solid #FFF176;
@@ -53,7 +80,7 @@
     padding-left: 15px;
     color: #FFF176;
     font-size: 19px;
-    width: 82%;
+    width: 61%;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -85,13 +112,7 @@ input:-ms-input-placeholder {
 	font-size: 19px;
     color: #FFF176;
 }
-.register-link {
-    font-size: 25px;
-    margin-top: 70px;
-}
-.register-link a {
-    color: #FFF176;
-}
+
 /* Registration */
 .registration-page {
     max-width: 100%;
@@ -174,6 +195,16 @@ input:-ms-input-placeholder {
     text-align: center;
     font-size: 45px
 }
+.login-link, 
+.register-link{
+    text-align: center;
+    margin-top: 15px;
+}
+.login-link a,
+.register-link a {
+    text-decoration: none;
+    color: #FFF176
+}
 
 /*
     ==================Workout Styles ========================
@@ -221,6 +252,17 @@ input:-ms-input-placeholder {
 .workout-title{
     font-weight: bold;
     font-size: 20px;
+}
+
+/*
+    ==================Error Styles ========================
+                                                                */
+
+.error-container{
+    width: 100%;
+    background-color: #24313C;
+    color: #1AB188;
+    display: block;
 }
 
 @media screen and (max-width: 750px) {

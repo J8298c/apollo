@@ -5,7 +5,7 @@ module.exports = (app, passport)=> {
     });
 
     app.get('/profile', isLoggedIn, (req, res) => {
-        res.render('users/profile', {user: req.user});
+        res.render('profile', {user: req.user});
     });
 
     app.get('/logout', (req, res)=>{
@@ -14,7 +14,7 @@ module.exports = (app, passport)=> {
     });
 
     app.get('/login', (req, res)=> {
-        res.render('users/login', {message: req.flash('loginMessage')});
+        res.render('login', {message: req.flash('loginMessage')});
     });
 
     app.post('/login', passport.authenticate('local-login', {
@@ -26,14 +26,14 @@ module.exports = (app, passport)=> {
     //============Signup==============//
     
     app.get('/signup', (req, res)=>{
-        res.render('users/signup', {message: req.flash('signupMessage')});
+        res.render('signup', {message: req.flash('signupMessage')});
     });
 
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect : '/profile',
         failureRedirect : '/signup',
         failureFlash    : true
-    })) 
+    })); 
 }
 
 function isLoggedIn(req, res, next) {
