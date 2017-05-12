@@ -1,3 +1,5 @@
+const User = require('../models/usermodel');
+
 module.exports = (app, passport)=> {
 
     app.get('/', (req, res)=> {
@@ -5,7 +7,10 @@ module.exports = (app, passport)=> {
     });
 
     app.get('/profile', isLoggedIn, (req, res) => {
-        res.render('profile', {user: req.user});
+        console.log(req.user, 'the req.user');
+        let email = req.user.local.email.split(/[@]/)[0]
+        console.log(email, 'email after split');
+        res.render('profile', {user: req.user, username: email});
     });
 
     app.get('/logout', (req, res)=>{
@@ -33,7 +38,21 @@ module.exports = (app, passport)=> {
         successRedirect : '/profile',
         failureRedirect : '/signup',
         failureFlash    : true
-    })); 
+    }));
+
+    //============AllUsers==================//
+
+    app.get('/allusers', (req, res)=>{
+        console.log(User, 'did it import the user');
+        User.find({}, (err, users)=>{
+            if(err){
+                res.render('error',{err: err});
+            } else {
+                console.log(users)
+                res.render('allusers', {alluser: users});
+            }
+        });
+    }); 
 }
 
 function isLoggedIn(req, res, next) {

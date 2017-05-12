@@ -12,12 +12,6 @@ var User       = require('./models/usermodel');
 
 module.exports = function(passport) {
 
-    // =========================================================================
-    // passport session setup ==================================================
-    // =========================================================================
-    // required for persistent login sessions
-    // passport needs ability to serialize and unserialize users out of session
-
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
         done(null, user.id);
@@ -72,10 +66,9 @@ module.exports = function(passport) {
         // by default, local strategy uses username and password, we will override with email
         usernameField : 'email',
         passwordField : 'password',
-        passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
+         passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
     },
     function(req, email, password, done) {
-        console.log(req.body.email)
         if (email)
             email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
 
@@ -98,6 +91,7 @@ module.exports = function(passport) {
 
                         newUser.local.email    = email;
                         newUser.local.password = newUser.generateHash(password);
+                        console.log('im in it');
 
                         newUser.save(function(err) {
                             if (err)
@@ -132,7 +126,6 @@ module.exports = function(passport) {
                     }
                 });
             } else {
-                // user is logged in and already has a local account. Ignore signup. (You should log out before trying to create a new account, user!)
                 return done(null, req.user);
             }
 

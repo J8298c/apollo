@@ -17,8 +17,9 @@ function validEmailCheck(email){
 const userSchema = new mongoose.Schema({
   local : {
       email: String,
-      password: String
-  }
+      password: String,
+  },
+  username: String
 });
 //need to validate name and username display name can have spaces username no spaces and no special charcters,
 //find middleware to validate js to take username and make it http friendly 

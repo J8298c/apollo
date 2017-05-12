@@ -1,14 +1,22 @@
 <% include partials/head %>
   <body class="profile-container">
-    <img src="/images/begreat.jpg" alt="user image for user homepage" class="user-page-userimage">
-    <div class="user-page-list-options">
-    <ul>
-      <li>Height: <span class="personal-gains">5'10<span></li>
-      <li>Weight: <span class="personal-gains">200<span></li>
-      <li>Favorite Workout: <span class="personal-gains">Bench-Press<span></li>
-      <li>Personal-Record: <span class="personal-gains">365Lbs<span></li>
-    </ul>
-    <blockquote class="personal-quote">'Never give up on your dreams'</blockquote>
+    <div class="profile-image-container">
+      <img src="/images/profile.jpg" alt="user image for user homepage">
     </div>
+    <div class="profile-info">
+      <h2>Welcome <%= username %></h2>
+    </div>
+    <div class="profile">
+    <h4 class="pro-cards"><i class="fa fa-address-book pro-icon" aria-hidden="true"> Followers</i><p class="inner-pro">15K</p></h4>
+    <hr class="hrstyle">
+    <h4 class="pro-cards"><i class="fa fa-heartbeat pro-icon" aria-hidden="true">
+ Current Workout</i><p class="inner-pro">StarLord</p></h4>
+    <hr class="hrstyle">
+    <h4 class="pro-cards"><i class="fa fa-heart pro-icon" aria-hidden="true">
+ Find New Workout</i><i class="fa fa-users pro-icon" aria-hidden="true">
+ <a href="/allusers">Find New Users</a></i></h4>
+    <hr class="hrstyle">
+    </div>
+      <button class="logout-btn"><a href="/logout">Logout</a></button>
   </body>
 </html>

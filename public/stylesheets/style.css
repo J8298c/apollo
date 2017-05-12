@@ -136,15 +136,6 @@ input:-ms-input-placeholder {
 
 /*profile Page */
 
-.profile-container img, .excersise-image {
-    width: 300px;
-    height: 300px;
-    display: block;
-    border: 1px solid #FFF176;
-    border-radius: 15px;
-    margin: 25px auto;
-
-} 
 .username,  .workout-name{
     text-align: center;
     font-size: 34px;
@@ -343,12 +334,11 @@ input:-ms-input-placeholder {
         margin-left: auto;
         margin-right: auto;
     }
-    .profile-container img {
-        width: 66%;
-        margin: 15px auto;
-        display: block;
-        border: 1px solid #FFF176;
-    }
+    .profile-image-container img {
+    width: 100%;
+    margin-top: 0;
+    border: none;
+}
     .username {
         text-align: center;
         font-size: 39px;
@@ -394,5 +384,59 @@ input:-ms-input-placeholder {
     .edit-workout-container h1 {
         text-align: center;
         font-size: 70px;
+    }
+    .login-container form {
+    width: 81%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #1AB188;
+    margin-top: 130px;
+    height: 35%;
+    padding-top: 25px;
+    border: 1px solid #1AB188;
+    border-radius: 8px;
+    padding-bottom: 25px;
+    }
+    .profile-info h2 {
+    text-align: center;
+    font-size: 24px;
+    }
+    .profile-info{
+        width: 100%;
+    }
+    h4.pro-cards {
+    font-size: 18px;
+    margin-left: 22px;
+    }
+    span.inner-pro {
+    margin-left: 52%;
+    }
+    .hrstyle {
+	    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #FFF176, rgba(0, 0, 0, 0));
+    }
+    .pro-icon {
+    width: 50%;
+    }
+    p.inner-pro {
+    display: inline;
+    }
+    button.logout-btn {
+    margin: 61px auto;
+    display: block;
+    width: 25%;
+    background-color: #1AB188;
+    border: 1px solid;
+    border-radius: 15px;
+    font-size: 23px;
+    }
+    button.logout-btn a {
+    text-decoration: none;
+    color: #FFF176;
+    }
+    a {
+    color: inherit;
+    text-decoration: none;
     }
 }

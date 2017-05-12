@@ -1,0 +1,12 @@
+<% include partials/head %>
+
+<body class="find-all-users-container">
+  <div class="users-container">
+ 
+<% for(var i=0; i<alluser.length; i++) {%>
+  <div class="usercard">
+   <a href="/profile"><%= alluser[i] %></a>
+   </div>
+<% } %>
+  </div>
+</body>
