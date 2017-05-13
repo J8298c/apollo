@@ -1,12 +1,19 @@
 <% include partials/head %>
 
 <body class="find-all-users-container">
+<div class="allusers-header">
+  <h1>Users near you</h1>
+</div>
   <div class="users-container">
  
 <% for(var i=0; i<alluser.length; i++) {%>
   <div class="usercard">
-   <a href="/profile"><%= alluser[i] %></a>
+   <a href="/follow/:name"><i class="fa fa-address-card users-icon" aria-hidden="true"> <%= alluser[i] %></i></a>
    </div>
 <% } %>
+  </div>
+  <div class="home-links">
+    <button class="allusers-button"><a href="/profile">Profile</a></button>
+    <button class="allusers-button"><a href="/workout">Workout</a></button>
   </div>
 </body>

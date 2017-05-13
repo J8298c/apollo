@@ -1,6 +1,6 @@
-const User = require('../models/usermodel');
 
-module.exports = (app, passport)=> {
+
+module.exports = (app, passport, User)=> {
 
     app.get('/', (req, res)=> {
         res.render('index', {title: 'Apollo'});
@@ -43,16 +43,22 @@ module.exports = (app, passport)=> {
     //============AllUsers==================//
 
     app.get('/allusers', (req, res)=>{
-        console.log(User, 'did it import the user');
         User.find({}, (err, users)=>{
             if(err){
                 res.render('error',{err: err});
             } else {
-                console.log(users)
-                res.render('allusers', {alluser: users});
+                let userArr = [];
+                users.map((user)=>{
+                   userArr.push(user.local.email.split(/[@]/)[0])
+                })
+                res.render('allusers', {alluser: userArr});
             }
         });
     }); 
+    app.get('/follow/:name', (req, res)=>{
+        console.log(req.params)
+        res.render('othersprofile', {username: hello});
+    })
 }
 
 function isLoggedIn(req, res, next) {

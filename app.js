@@ -14,7 +14,7 @@ const session = require('express-session');
 const passport = require('passport');
 require('./passport')(passport);
 const mongoose = require('mongoose');
-
+const User = require('./models/usermodel');
 const app = express();
 mongoose.connect('mongodb://localhost:27017/apollotest');
 
@@ -37,7 +37,8 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash());
 
-require('./routes/users')(app,passport);
+require('./routes/users')(app,passport, User);
+// require('./routes/workout')(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
