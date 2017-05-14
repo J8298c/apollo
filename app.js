@@ -7,16 +7,14 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 const flash = require('connect-flash');
-// const index = require('./routes/index');
-// const users = require('./routes/users');
-// const workout = require('./routes/workout');
 const session = require('express-session');
 const passport = require('passport');
 require('./passport')(passport);
 const mongoose = require('mongoose');
 const User = require('./models/usermodel');
+const Workout = require('./models/workoutmodel');
 const app = express();
-mongoose.connect('mongodb://localhost:27017/apollotest');
+mongoose.connect(process.env.DB_URL);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -38,7 +36,7 @@ app.use(passport.session())
 app.use(flash());
 
 require('./routes/users')(app,passport, User);
-// require('./routes/workout')(app, passport);
+require('./routes/workout')(app, passport, Workout);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  <!--how to load this file and then create my post request on submit-->
-    <title></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+  <% include ../partials/head %>
+
   <body class="workout-edit-container">
     <form action=<%= "/workout/" + name + "/update?_method=PUT"%> method="POST">
-    <h1>Edit your workout</h1>
-    <input class="new-workout-name" placeholder="New Workout Name" type="text" name="workout" value=<%="" + name + "" %>>
+    <h1 class="edit-name">Edit your workout</h1>
+    <input class="new-equipment" placeholder="New Workout Name" type="text" name="workout" value=<%="" + name + "" %>>
     <input class="new-equipment" placeholder="New equipment name" type="text" name="equipment">
      <fieldset class="bodyparts">
     <legend>BodyPart for excersise</legend>
@@ -24,4 +19,3 @@
     <button class="submitbtn">Submit</button>
     </form>
   </body>
-</html>

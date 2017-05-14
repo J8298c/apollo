@@ -112,7 +112,7 @@ describe('Testing API Endpoints', function(){
   })
   let res;
   chai.request(app)
-  .post('/users/register', {name: faker.name.firstName(), email: faker.hacker.verb(), password: faker.lorem.word()})
+  .post('/users/register', {username: faker.name.firstName(), email: faker.hacker.verb(), password: faker.lorem.word()})
   .then(_res => {
     res = _res;
     res.should.have.status(406)

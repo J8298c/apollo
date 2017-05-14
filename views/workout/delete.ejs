@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>User delete page</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-  </head>
-  <body class="workout-delete-container">
+<% include ../partials/head %>
+<body class="workout-delete-container">
     <form action=<%= "/workout/" + name + "/remove?_method=DELETE"%> method="POST">
     <h3>Going to delete this workout <%='(' + name + ')' %> !!!</h3>
     <button type="submit" class="submitbtn">Submit</button>
     </form>
   </body>
-</html>

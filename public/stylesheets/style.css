@@ -5,7 +5,7 @@
 .find-all-users-container, 
 .all-workouts-container, 
 .workout-profile-container, 
-.workout-edit-container, 
+.workout-create-container, 
 .workout-delete-container, 
 .splashpage, 
 .edit-profile, 
@@ -235,11 +235,7 @@ input:-ms-input-placeholder {
     text-decoration: none;
     cursor: grab;
 }
-.add-workout{
-    float: left;
-    margin-left: 40%;
-    font-size: 28px;
-}
+
 .workout-title{
     font-weight: bold;
     font-size: 20px;
@@ -369,8 +365,10 @@ input:-ms-input-placeholder {
         margin-top: 25%;
     }
     .bodyparts {
-        width: 59%;
-        margin: 0 auto;
+    width: 59%;
+    margin: 0 auto;
+    border-color: #FFF176;
+    color: #1AB188;
     }
     .indvidual-gym-text ul{
         margin: 0;
@@ -379,7 +377,6 @@ input:-ms-input-placeholder {
     .edit-workout {
         display: inline-block;
         width: 50%;
-        margin: 5px auto;
     }
     .edit-workout-container h1 {
         text-align: center;
@@ -467,5 +464,50 @@ input:-ms-input-placeholder {
     .home-links {
     margin-top: 13%;
     margin-left: 33%;
+    }
+    .add-workout {
+    width: 85%;
+    display: block;
+    margin: 25% auto;
+    background-color: #1AB188;
+    color: #24313C;
+    padding: 24px;
+    }
+    input.add-workout-input {
+    width: 90%;
+    display: block;
+    background-color: #24313C;
+    border: 1px solid;
+    height: 16px;
+    border-radius: 3px;
+    padding: 5px;
+    color: #FFF176;
+    font-size: 15px;
+    }
+    .add-workout label {
+    /* margin-top: 1px; */
+    font-size: 22px;
+    }
+    button.new-workout-submit {
+    display: block;
+    margin: 24px auto;
+    background-color: #FFF176;
+    width: 35%;
+    border: 1px solid #FFF176;
+    border-radius: 15px;
+    }
+    .excersise-image {
+    display: block;
+    margin: 25px auto;
+    }
+    .edit-delete-links {
+    margin-top: 60px;
+    }
+    h1.edit-name {
+    color: #1AB188;
+    text-align: center;
+    }
+    .submitbtn{
+    margin: 42px auto;
     }
 }
