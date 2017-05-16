@@ -6,7 +6,7 @@ const express = require('express');
 const faker = require('faker');
 const should = chai.should();
 const {APOLLO_TEST_DATABASE, PORT} = require('../test/config');
-const {Workout} = require('../models/workoutmodel');
+const Workout = require('../models/workoutmodel');
 const app = express();
 const assert = require('assert');
 
