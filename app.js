@@ -5,7 +5,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-
+const {APOLLO_PRODUCTION_DATABASE, PORT} = require('../test/config');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
@@ -14,7 +14,7 @@ const mongoose = require('mongoose');
 const User = require('./models/usermodel');
 const Workout = require('./models/workoutmodel');
 const app = express();
-mongoose.connect('mongodb://localhost:27017/apollotest');
+mongoose.connect(APOLLO_PRODUCTION_DATABASE);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
