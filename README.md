@@ -1,3 +1,4 @@
+<img src="https://travis-ci.org/J8298c/apollo.svg?branch=master">
 Apollo Workout Logger
 
 Current Version Alpha 
