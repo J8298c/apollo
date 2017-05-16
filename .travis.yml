@@ -4,7 +4,7 @@ services:
 - mongodb
 env: 
 - NODE_ENV=test
--DB_URL=mongodb://root:root@ds115701.mlab.com:15701/apollotest
+
 before_script:
   - sleep 15
   - mongo mydb_test --eval 'db.addUser("travis", "test");'
