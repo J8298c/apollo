@@ -19,8 +19,8 @@ mongoose.Promise = global.Promise;
 
 function seedData(){
  
- let name = faker.commerce.color();
- let equipment = faker.commerce.productMaterial();
+ let name = faker.company.companyName();
+ let equipment = faker.commerce.product();
  let bodyParts = [faker.commerce.product(), faker.hacker.noun()];
  let seededWorkouts = [];
  for(var i = 0; i < 4; i++){
@@ -30,6 +30,7 @@ function seedData(){
      bodyParts: bodyParts
    });
  }
+ console.log(seededWorkouts);
  Workout.insertMany(seededWorkouts);
 }
 
