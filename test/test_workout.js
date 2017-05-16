@@ -19,7 +19,7 @@ mongoose.Promise = global.Promise;
 
 function seedData(){
  
- let name = faker.commerce.color;
+ let name = faker.commerce.color();
  let equipment = faker.commerce.productMaterial();
  let bodyParts = [faker.commerce.product(), faker.hacker.noun()];
  let seededWorkouts = [];
