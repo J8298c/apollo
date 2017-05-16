@@ -5,8 +5,10 @@ const chaiHttp = require('chai-http');
 const express = require('express');
 const faker = require('faker');
 const should = chai.should();
-const {APOLLO_TEST_DATABASE, PORT} = require('../test/config');
-const {User} = require('../models/usermodel');
+// const {APOLLO_TEST_DATABASE, PORT} = require('../test/config');
+const APOLLO_TEST_DATABASE = process.env.APOLLO_TEST_DATABASE;
+const PORT = process.env.PORT;
+const User = require('../models/usermodel');
 const app = express();
 const assert = require('assert');
 
