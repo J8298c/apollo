@@ -12,8 +12,9 @@ const passport = require('passport');
 require('./passport')(passport);
 const mongoose = require('mongoose');
 const User = require('./models/usermodel');
-const Workout = require('./models/workoutmodel');
+const {Workout, SuperHero} = require('./models/workoutmodel');
 const app = express();
+
 mongoose.connect(APOLLO_PRODUCTION_DATABASE);
 
 app.set('views', path.join(__dirname, 'views'));
@@ -36,7 +37,7 @@ app.use(passport.session())
 app.use(flash());
 
 require('./routes/users')(app,passport, User);
-require('./routes/workout')(app, passport, Workout);
+require('./routes/workout')(app, passport, Workout, SuperHero);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
