@@ -1,4 +1,4 @@
-module.exports = (app, passport, Workout) => {
+module.exports = (app, passport, Workout, Superhero) => {
     
 
 
