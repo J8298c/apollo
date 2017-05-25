@@ -1,52 +1,24 @@
 {
-  "name": "apollo",
+  "name": "gymapollo",
   "version": "0.0.0",
   "private": true,
-  "engines": {
-    "node": "7.9.0"
-  },
   "scripts": {
-    "start": "node ./bin/www",
-    "test": "mocha --timeout 10000"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
-    "body-parser": "~1.15.2",
-    "chai": "^3.5.0",
-    "chai-http": "^3.0.0",
+    "body-parser": "~1.17.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.3",
-    "cors": "^2.8.1",
-    "debug": "~2.2.0",
-    "dotenv": "^4.0.0",
-    "ejs": "~2.5.2",
-    "express": "~4.14.0",
-    "express-session": "^1.15.2",
-    "faker": "^3.1.0",
-    "method-override": "^2.3.7",
-    "mocha": "^3.2.0",
-    "mongoose": "^4.7.5",
-    "mongoose-unique-validator": "^1.0.3",
-    "morgan": "~1.7.0",
-    "node-mongoose-validator": "^1.2.0",
+    "debug": "~2.6.3",
+    "ejs": "~2.5.6",
+    "express": "~4.15.2",
+    "express-session": "^1.15.3",
+    "mongoose": "^4.10.2",
+    "mongoose-unique-validator": "^1.0.5",
+    "morgan": "~1.8.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "serve-favicon": "~2.3.0"
-  },
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "faker": "^3.1.0",
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.3.0",
-    "gulp-cssmin": "^0.1.7",
-    "gulp-rename": "^1.2.2",
-    "gulp-util": "^3.0.8",
-    "mocha": "^3.2.0",
-    "nodemon": "^1.11.0",
-    "uglify-js": "^3.0.4"
-  },
-  "main": "index.js",
-  "repository": "https://github.com/J8298c/apollo.git",
-  "author": "j8298c <juliocmojica@gmail.com>",
-  "license": "MIT"
+    "serve-favicon": "~2.4.2"
+  }
 }

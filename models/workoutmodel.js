@@ -1,22 +1,25 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const apolloSchema = new mongoose.Schema({
+const workoutSchema = new Schema({
     name: {
         type: String,
         required: true
     },
-    bodyParts: Array,
-    equipment: {
-        type: String,
-        required: true
-    },
-    createdAt: { 
-        type: Date,
-        required: true,
-        default: new Date()
-    }
-});  
-const Workout = mongoose.model('Workout', apolloSchema);
+    workout:[{
+        name: {
+            type: String,
+            required: true
+        },
+        reps: {
+            type: String,
+            required: true
+        },
+        sets: {
+            type: String,
+            required: true
+        },
+    }]
+});
 
-module.exports = Workout;
+const Workout = mongoose.model('Workout', workoutSchema);

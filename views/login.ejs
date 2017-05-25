@@ -1,15 +1,10 @@
 <% include partials/head %>
-
-  <body class="login-container">
-  <h1>Apollo Total Fitness</h1>
-      <h3>Log In</h3>
-      <form action="/login" class="login" method="POST">
-        <input type="text" class="login-username" placeholder="name" name="email">
-        <input type="password" class="login-password" placeholder="Password" name="password">
-        <button class="login-submit" value="Log In">Login</button>
-      </form>
-      <!--blank comment for github push to sync-->
-      <p class="register-link">Need to Register? <a href="/signup">Register</a></p>
-      </div>
-  </body>
-</html>
+<body id="login-page">
+    <form>
+        <input type="text" placeholder="Enter email" name="email">
+        <input type="password" placeholder="Enter a password" name="password">
+        <button class="login-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Login</button>
+    </form>
+    <p>Need an account click <a href="/users/signup">here</a></p>
+</body>
+<% include partials/footer %>

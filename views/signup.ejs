@@ -1,12 +1,19 @@
 <% include partials/head %>
-  <body class="registration-page">
-  <h1>Welcome to Apollo</h1>
-    <form action="/signup" method="POST" class="registration-form">
-    <input type="text" placeholder="Email" name="email" class="new-user-email">
-    <input type="password" placeholder="Create Password" name="password" class="new-user-password">
-    <input type="text" placeholder="Enter a username" name="username" class="new-user-password">
-    <button type="submit" class="submitbtn">Submit</button>
+<body>
+    <form class="signup-form" method="post" action="users/signup">
+        <div>
+            <label for="email">Email:</label>
+            <input class="signupemail" type="text" name="email" placeholder="Enter your email"/>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input class="signuppassword" type="password" name="password" placeholder="Enter a password"/>
+        </div>
+        <div>
+            <label for="username">Username:</label>
+            <input class="signupusername" type="text" name="username" placeholder="Enter a username"/>
+        </div>
+            <button class="login-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Submit</button>
     </form>
-    <p class="login-link">Already have an account click <a href="/login">here</a> to log in</p>
-  </body>
-</html>
+</body>
+<% include partials/footer %>
