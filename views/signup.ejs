@@ -1,15 +1,11 @@
 <% include partials/head %>
 <body>
     <form class="signup-form" method="post" action="/signup">
-        <div>
-            <label for="email">Email:</label>
-            <input class="signupemail" type="text" name="email" placeholder="Enter your email"/>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input class="signuppassword" type="password" name="password" placeholder="Enter a password"/>
-        </div>
-            <button class="login-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Submit</button>
+        <input type="text" placeholder="Enter email" name="email">
+        <input type="password" placeholder="Enter a password" name="password">
+        <input type="text" placeholder="Enter a username" name="displayname">
+        <button class="login-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Sign up</button>
     </form>
+    <p>Have an account click <a href="/users/login">here</a></p>
 </body>
 <% include partials/footer %>

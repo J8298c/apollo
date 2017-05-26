@@ -59,6 +59,8 @@ module.exports = function(passport) {
          passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
     },
     function(req, email, password, done) {
+        const displayname = req.body.displayname;
+        console.log(req.body.displayname, 'the displayname')
         if (email)
             email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
 
@@ -81,7 +83,7 @@ module.exports = function(passport) {
                         console.log(newUser, 'the new user')
                         newUser.email    = email;
                         newUser.password = newUser.generateHash(password);
-                        console.log('im in it');
+                        newUser.displayname = displayname;
 
                         newUser.save(function(err) {
                             if (err)
@@ -102,11 +104,13 @@ module.exports = function(passport) {
                     
                     if (user) {
                         return done(null, false, req.flash('loginMessage', 'That email is already taken.'));
-                        // Using 'loginMessage instead of signupMessage because it's used by /connect/local'
+
                     } else {
                         var user = req.user;
                         user.email = email;
                         user.password = user.generateHash(password);
+                        user.displayname = displayname;
+                        console.log(user.displayname, 'this is the user displayname')
                         user.save(function (err) {
                             if (err)
                                 return done(err);
