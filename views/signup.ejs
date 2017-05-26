@@ -1,6 +1,6 @@
 <% include partials/head %>
 <body>
-    <form class="signup-form" method="post" action="users/signup">
+    <form class="signup-form" method="post" action="/signup">
         <div>
             <label for="email">Email:</label>
             <input class="signupemail" type="text" name="email" placeholder="Enter your email"/>
@@ -8,10 +8,6 @@
         <div>
             <label for="password">Password:</label>
             <input class="signuppassword" type="password" name="password" placeholder="Enter a password"/>
-        </div>
-        <div>
-            <label for="username">Username:</label>
-            <input class="signupusername" type="text" name="username" placeholder="Enter a username"/>
         </div>
             <button class="login-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Submit</button>
     </form>

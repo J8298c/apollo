@@ -29,7 +29,7 @@ module.exports = function(passport) {
 
         // asynchronous
         process.nextTick(function() {
-            User.findOne({ 'local.email' :  email }, function(err, user) {
+            User.findOne({ 'email' :  email }, function(err, user) {
                 // if there are any errors, return the error
                 if (err)
                     return done(err);
@@ -66,7 +66,7 @@ module.exports = function(passport) {
         process.nextTick(function() {
             // if the user is not already logged in:
             if (!req.user) {
-                User.findOne({ 'local.email' :  email }, function(err, user) {
+                User.findOne({ 'email' :  email }, function(err, user) {
                     // if there are any errors, return the error
                     if (err)
                         return done(err);
@@ -78,9 +78,9 @@ module.exports = function(passport) {
 
                         // create the user
                         var newUser            = new User();
-
-                        newUser.local.email    = email;
-                        newUser.local.password = newUser.generateHash(password);
+                        console.log(newUser, 'the new user')
+                        newUser.email    = email;
+                        newUser.password = newUser.generateHash(password);
                         console.log('im in it');
 
                         newUser.save(function(err) {
@@ -93,10 +93,10 @@ module.exports = function(passport) {
 
                 });
             // if the user is logged in but has no local account...
-            } else if ( !req.user.local.email ) {
+            } else if ( !req.user.email ) {
                 // ...presumably they're trying to connect a local account
                 // BUT let's check if the email used to connect a local account is being used by another user
-                User.findOne({ 'local.email' :  email }, function(err, user) {
+                User.findOne({ 'email' :  email }, function(err, user) {
                     if (err)
                         return done(err);
                     
@@ -105,8 +105,8 @@ module.exports = function(passport) {
                         // Using 'loginMessage instead of signupMessage because it's used by /connect/local'
                     } else {
                         var user = req.user;
-                        user.local.email = email;
-                        user.local.password = user.generateHash(password);
+                        user.email = email;
+                        user.password = user.generateHash(password);
                         user.save(function (err) {
                             if (err)
                                 return done(err);

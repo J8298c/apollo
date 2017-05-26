@@ -58,12 +58,12 @@ p {
   #landing-page h1 {
     text-align: center;
     color: #fcfcfc;
-    font-size: 60px;
+    font-size: 125px;
     margin-top: 0px;
     margin-bottom: 93px;
   }
   img.wieght-icon {
-    width: 35%;
+    width: 40%;
     display: block;
     margin: 0 auto;
   }
@@ -72,9 +72,9 @@ p {
     margin: 0 auto;
     background-color: #27ABB9;
     border: 1px solid #27ABB9;
-    width: 20%;
-    font-size: 20px;
-    height: 38px;
+    width: 30%;
+    font-size: 36px;
+    height: 68px;
     border-radius: 7px;
     color: #fcfcfc;
   }

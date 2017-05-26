@@ -13,7 +13,7 @@ const User = require('./models/usermodel');
 const Workout = require('./models/workoutmodel');
 
 const app = express();
-
+mongoose.connect('mongodb://localhost:27017/apollo');//change for production
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
