@@ -1,7 +1,7 @@
 module.exports = (app, passport, User)=>{
 
   app.get('/users/profile', isLoggedIn, (req, res)=>{
-    res.render('profile', {user: req.user});
+    res.render('profile', {user: req.user.email});
   });
 
   app.get('logout', (req, res)=>{
