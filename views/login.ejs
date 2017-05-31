@@ -1,9 +1,13 @@
 <% include partials/head %>
 <body id="login-page">
+    <h1>Apollo</h1>
+    <h5>Personal Fitness Logger</h5>
     <form method="post" action="/login">
+        <div class="login-inputs">
         <input type="text" placeholder="Enter email" name="email">
         <input type="password" placeholder="Enter a password" name="password">
-        <button class="login-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Login</button>
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--raised app-button loginbutton">Login</button>
     </form>
     <p>Need an account click <a href="/users/signup">here</a></p>
 </body>

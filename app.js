@@ -13,7 +13,8 @@ const User = require('./models/usermodel');
 const Workout = require('./models/workoutmodel');
 
 const app = express();
-mongoose.connect('mongodb://root:root@ds033135.mlab.com:33135/apollo');//change for production
+mongoose.connect('mongodb://localhost/apollo');
+//mongoose.connect('mongodb://root:root@ds033135.mlab.com:33135/apollo');//change for production
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
