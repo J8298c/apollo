@@ -8,12 +8,13 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 require('./passport')(passport);
+require('dotenv').config();
 const mongoose = require('mongoose');
 const User = require('./models/usermodel');
 const Workout = require('./models/workoutmodel');
 
 const app = express();
-mongoose.connect('mongodb://localhost/apollo');
+mongoose.connect(process.env.DB_URL);
 //mongoose.connect('mongodb://root:root@ds033135.mlab.com:33135/apollo');//change for production
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
