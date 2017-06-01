@@ -4,7 +4,7 @@ module.exports = (app, passport, User)=>{
     res.render('profile', {user: req.user.email});
   });
 
-  app.get('logout', (req, res)=>{
+  app.get('/logout', (req, res)=>{
     req.logout();
     res.redirect('/');
   });
