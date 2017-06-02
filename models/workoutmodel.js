@@ -22,6 +22,7 @@ const workoutPlaylist = new Schema({
         type: String,
         required: true
     },
+    picture: String,
     workouts: [workoutSchema]
 });
 

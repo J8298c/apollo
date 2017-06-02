@@ -58,6 +58,12 @@ module.exports = (app, Workout) =>{
           reps: req.body.reps,
           sets: req.body.sets
       });
+      workout.save(err=>{
+          if(err){
+              console.log(err);
+          }
+          res.render('allworkouts')
+      })
       console.log('the workout', workout);
   })
 }
