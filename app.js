@@ -14,8 +14,8 @@ const User = require('./models/usermodel');
 const {Workout} = require('./models/workoutmodel');
 const {HeroWod} = require('./models/workoutmodel');
 const app = express();
-// mongoose.connect(process.env.DB_TEST_URL);
-mongoose.connect(process.env.DB_URL);
+mongoose.connect(process.env.DB_TEST_URL);
+// mongoose.connect(process.env.DB_URL);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

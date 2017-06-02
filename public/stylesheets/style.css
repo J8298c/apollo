@@ -47,29 +47,103 @@ button.app-button{
     font-size: 53px;
     text-align: center;
 }
+h5.app-description {
+    text-align: center;
+    margin-top: -17px;
+}
 #login-page form,
 .signup-form{
   width: 100%;
   margin-top: 65px;
 }
-
-#login-page input[type="text"] {
-    width: 100%;
-    background: rgba(206, 212, 216, 0.3);
+.login-inputs {
+    width: 70%;
     display: block;
-    border: none;
-}
-#login-page input[type="password"] {
-    width: 65%;
-    margin: 6px auto;
-    display: block;
+    margin: 0 auto;
 }
 
-p {
-    width: 100%;
-    text-align: center;
-    margin-top: 23px;
+  #login-page input[type="text"],
+  #login-page input[type="password"],
+  .signup-form input[type="text"],
+  .signup-form input[type="password"]{
+   background: rgba(206, 212, 216, 0.3);
+   width: 100%;  
+   margin: 0;
+   padding: 0;
+   border: none;
+   height: 45px;
+   padding: 5px;
+   color: #D7DEE4;
+   font-size: 18px;
+  }
+#login-page input[type="text"],
+  .signup-form input[type="text"]{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 1px solid #D7DEE4;
+  }
+  #login-page input[type="password"]{
+     border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  .signup-form input[type="text"]::-webkit-input-placeholder,
+  #login-page input[type="text"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #D7DEE4;
+  font-size: 18px;
+  }
+  .signup-form input[type="text"]::-moz-placeholder-placeholder,
+  #login-page input[type="text"]::-moz-placeholder-placeholder { /* Chrome/Opera/Safari */
+  color: #D7DEE4;
+  font-size: 18px;
+  }
+  .signup-form input[type="text"]:-ms-input-placeholder,
+  #login-page input[type="text"]:-ms-input-placeholder { /* Chrome/Opera/Safari */
+  color: #D7DEE4;
+  font-size: 18px;
+  }
+  .signup-form input[type="text"]:-moz-placeholder,
+  #login-page input[type="text"]:-moz-placeholder { /* Chrome/Opera/Safari */
+  color: #D7DEE4;
+  font-size: 18px;
+  }
+  .signup-form input[type="password"]::-webkit-input-placeholder,
+  #login-page input[type="password"]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #D7DEE4;
+  font-size: 18px;
+  }
+  .signup-form input[type="password"]::-moz-placeholder-placeholder,
+  #login-page input[type="password"]::-moz-placeholder-placeholder { /* Chrome/Opera/Safari */
+  color: #D7DEE4;
+  font-size: 18px;
+  }
+  .signup-form input[type="password"]:-ms-input-placeholder,
+  #login-page input[type="password"]:-ms-input-placeholder { /* Chrome/Opera/Safari */
+  color: #D7DEE4;
+  font-size: 18px;
+  }
+  .signup-form input[type="password"]:-moz-placeholder,
+  #login-page input[type="password"]:-moz-placeholder { /* Chrome/Opera/Safari */
+  color: #D7DEE4;
+  font-size: 18px;
+  }
+  .loginbutton,
+  #signupbutton {
+    display: block;
+    margin: 24px auto;
+    width: 31%;
 }
+input:focus { 
+    border-color: #D7DEE4;
+    background-color: #D7DEE4;
+}
+#login-page p,
+.signup-page p{
+  width: 100%;
+  text-align: center;
+  margin-top: 71px;
+  font-size: 18px;
+}
+
 .signup-page{
   width: 100%;
   background:linear-gradient(0deg,rgba(49, 62, 82, 0.9),rgba(49, 62, 82, 0.9)), url('../images/signup.jpg') center center no-repeat;
