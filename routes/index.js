@@ -1,4 +1,4 @@
-module.exports = (app, passport, Workout) =>{
+module.exports = (app, Workout) =>{
         
   app.get('/', (req, res)=>{
     res.render('index', {title: 'Apollo'});
@@ -48,4 +48,16 @@ module.exports = (app, passport, Workout) =>{
             }]
       })
   });
+
+  app.get('/create', (req, res, next)=>{
+      res.render('createworkout')
+  })
+  app.post('/create', (req, res, next)=>{
+      const workout = new Workout({
+          name: req.body.name,
+          reps: req.body.reps,
+          sets: req.body.sets
+      });
+      console.log('the workout', workout);
+  })
 }

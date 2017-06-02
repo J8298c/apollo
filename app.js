@@ -11,11 +11,11 @@ require('./passport')(passport);
 require('dotenv').config();
 const mongoose = require('mongoose');
 const User = require('./models/usermodel');
-const Workout = require('./models/workoutmodel');
-
+const {Workout} = require('./models/workoutmodel');
+const {HeroWod} = require('./models/workoutmodel');
 const app = express();
+// mongoose.connect(process.env.DB_TEST_URL);
 mongoose.connect(process.env.DB_URL);
-//mongoose.connect('mongodb://root:root@ds033135.mlab.com:33135/apollo');//change for production
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -38,7 +38,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-require('./routes/index')(app);
+require('./routes/index')(app, Workout);
 require('./routes/users')(app, passport, User);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

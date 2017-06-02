@@ -129,7 +129,8 @@ p {
    border: none;
    height: 45px;
    padding: 5px;
-   color: #D7DEE4
+   color: #D7DEE4;
+   font-size: 18px;
   }
   #login-page input[type="text"],
   .signup-form input[type="text"]{
@@ -297,9 +298,34 @@ p {
     display: block;
   }
   h1.workout-title {
-    font-size: 100px;
+    font-size: 50px;
     text-align: center;
-    color: yellow;
+    color: #E4EBF1;
+    }
+    .workout-title-div{
+      background-color: #26D583;
+    }
+    a.nodecoration {
+    text-decoration: none;
+    }
+    h1.workout-title {
+    font-size: 50px;
+    text-align: center;
+    color: #E4EBF1;
+    margin-top: 0px;
+    }
+    .newworkout.mdl-grid {
+    margin-left: 0px;
+    margin-right: 0px;
+    }
+    .newworkout input[type="text"] {
+    width: 100%;
+    margin-top: 4px;
+    border-radius: 5px;
+    border: 1px;
+    height: 25px;
+    padding-left: 4px;
+    font-size: 13px;
     }
   ul.workoutname {
     width: 41%;

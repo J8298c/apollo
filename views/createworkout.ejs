@@ -1,0 +1,27 @@
+<% include partials/head %>
+<body class="workout-create">
+    <div class="workout-title-div">
+        <h1 class="workout-title">Apollo</h1>
+    </div>
+    <div class="workoutcreate mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+        <form action="/create" method="post">
+        <div class="newworkout mdl-grid">
+            <div class="mdl-cell mdl-cell--4-col">
+                <label for="name">Workout Name</label>
+                <input type="text" name="name" placeholder="Enter the name of your workout">
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">
+                <label for="reps">Reps</label>
+                <input type="text" name="reps" placeholder="Enter a Rep count">
+            </div>
+            <div class="mdl-cell mdl-cell--4-col">
+                <label for="sets">Sets</label>
+                <input type="text" name="sets" placeholder="Enter the amount of sets">
+            </div>
+        </div>
+        <a href="/create" class="nodecoration"><button class="mdl-button mdl-js-button mdl-button--raised app-button startbutton">Save</button></a>
+        </form>
+    </div>
+    <div class="crate-workout-footer"></div>
+</body>
+<% include partials/footer %>

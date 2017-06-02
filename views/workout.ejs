@@ -1,15 +1,10 @@
 <% include partials/head %>
 <body class="workout-page">
-    <h1 class="workout-title"><%=name %></h1>
+    <div class="workout-title-div">
+        <h1 class="workout-title"><%=name %></h1>
+    </div>
     <div class="workout-stats">
-        <% for(let i = 0; i < workout.length; i++) {%>
-            <ul class="workoutname">
-            <h4><%= workout[i].name %></h4>
-            <hr>
-            <li class="workoutstat">set: <%= workout[i].set %></li>
-            <li class="workoutstat">reps: <%=workout[i].reps %></li>
-            </ul>
-            <% } %>
+    
     </div>
 </body>
 
