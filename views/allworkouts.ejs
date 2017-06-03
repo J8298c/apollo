@@ -1,10 +1,18 @@
 <% include ./partials/head %>
 <body id="allworkout">
-    <div class="workout">
-        <div class="superherocard">
-         <h3 class="workout-hero"><%=name %></h3>
-         <a href=<%="/workout/" + name%>><img src="/images/starlord.jpg" alt="starlord marvel superheros" class="superhero-icon" name="starlord"></a>
-         </div>
+    <div class="mdl-layout mdl-js-layout workout-card-container">
+    <div class="mdl-grid wordkout-cards">
+    <% for(let i = 0; i < workouts.length; i++) {%>
+    <div class="mdl-cell mdl-cell--2-col workout-card">
+        <div class="card-image">
+            <img src="/images/shoulderpress.svg" alt="workout image" class="workout-div-img"/>
+        </div>
+        <div class="card-title">
+            <a href=<%='workout/' + workouts[i].name%>><h6><%=workouts[i].name %></h6></a>
+        </div>
+        </div>
+        <% } %>
+        </div>
     </div>
     <a href="/create" class="nodecoration"><button class="mdl-button mdl-js-button mdl-button--raised app-button startbutton">Add New</button></a>
 </body>

@@ -4,13 +4,20 @@ body {
   background-color: #313E52 ;
   color: #E4EBF1;
 }
+#landing-page {
+  background: linear-gradient(0deg,rgba(49, 62, 82, 0.9),rgba(49, 62, 82, 0.9)), url('../images/brooklyn_bridge.jpg');
+  background-repeat: none;
+  background-position: center;
+  background-size: cover;
+}
 #landing-page h1 {
     text-align: center;
-    color: #E4EBF1 ;
-    font-size: 70px;
+    color: #E4EBF1;
+    font-size: 84px;
+    margin-top: -100px;
 }
 img.wieght-icon {
-    width: 50%;
+    width: 40%;
     display: block;
     margin: 0 auto;
 }
@@ -19,7 +26,7 @@ button.app-button{
   color: #E4EBF1; 
 }
 .startbutton {
-    width: 28%;
+    width: 18%;
     display: block;
     margin: 0 auto;
 }
@@ -155,6 +162,7 @@ input:focus {
   height: 170px;
   width: 100%;
 }
+
 @media only screen and (max-width: 800px) and (min-width: 300px)  {
   #landing-page h1 {
     text-align: center;
@@ -172,7 +180,7 @@ input:focus {
 .startbutton {
     width: 28%;
     display: block;
-    margin: 0 auto;
+    margin: 0px auto;
 }
 .app-title {
     font-size: 53px;
@@ -425,5 +433,33 @@ input:focus {
     display: block;
     margin: 5px auto;
     }
+    .workout-card {
+    width: 44%;
+    display: inline;
+    margin-top: 39px;
+    border: 1px solid;
+    background-color: #26D583;
+    }
+    .card-image {
+    width: 45%;
+    /* margin: 0px; */
+    padding: 0px;
+    display: block;
+    margin: 0 auto;
+  }
+  img.workout-div-img {
+    width: 100%;
+  }
+  .card-title {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+  .card-title h6 {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+  }
 }
 

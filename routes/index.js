@@ -5,50 +5,18 @@ module.exports = (app, Workout) =>{
   });
 
   app.get('/all', (req, res, next)=>{
-      res.render('allworkouts', {name: 'Starlord'})//hardcoded value for now
-  });
-
-  app.get('/workout/:name', (req, res, next)=>{
-      //hardcoded values for MVP
-      res.render('workout', 
-      {
-          name: req.params.name,
-          workout:[{
-            name: 'jog',
-            set: '10 mins',
-            reps: 1
-            },{
-            name: 'pullups',
-            set: 3,
-            reps: 3
-            },{
-            name: 'pushups',
-            set: 3,
-            reps: 10
-            },{
-            name: 'squats',
-            set: 3,
-            reps: 10
-            },{
-            name: 'lat pull-down',
-            set: 5,
-            reps: 10
-            },{
-            name: 'dumbbell-rows',
-            set: 5,
-            reps: 10
-            },{
-            name: 'barbell-curls',
-            set: 5,
-            reps: 10
-            },{
-            name: 'curls',
-            set: 5,
-            reps: 10
-            }]
+      Workout.find({})
+      .exec((err, workouts)=>{
+          if(err){
+              console.log(err);
+          } else {
+          console.log(workouts, 'workouts in the DB');
+        res.render('allworkouts', {workouts: workouts})
+          }
       })
   });
 
+//create workout routes
   app.get('/create', (req, res, next)=>{
       res.render('createworkout')
   })
@@ -61,9 +29,30 @@ module.exports = (app, Workout) =>{
       workout.save(err=>{
           if(err){
               console.log(err);
+          } else {
+            Workout.find({})
+             .exec((err, workouts)=>{
+          if(err){
+              console.log(err);
+          } else {
+          console.log(workouts, 'workouts in the DB');
+        res.render('allworkouts', {workouts: workouts})
           }
-          res.render('allworkouts')
+      })
+          }
       })
       console.log('the workout', workout);
-  })
+  });
+
+//edit workout routes
+    app.get('/workout/:name', (req, res, next)=>{
+      Workout.findOne({name: req.params.name}, (err, workout)=>{
+          if(err){
+              console.log(err);
+          } else {
+              res.render('workout', {name: workout.name, reps: workout.reps, sets: workout.sets})
+          }
+      })
+  });
+
 }
