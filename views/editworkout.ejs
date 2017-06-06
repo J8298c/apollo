@@ -11,7 +11,7 @@
     </div>
     <h5>Edit Your Workout</h5>
     <hr>
-    <form action="/edit" method="put" class="edit-form">
+    <form action=<%="/edit/" + name%> method="put" class="edit-form">
         <div>
             <label for="name">Name</label>
             <input type="text" name="name" value=<%= name %> disabled>

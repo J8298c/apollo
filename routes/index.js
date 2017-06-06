@@ -81,22 +81,8 @@ app.get('/edit/:name', (req, res) => {
         }
     })
 });
-app.put('/edit', (req, res) => {
-    Workout.findOneAndUpdate({name: req.params.name}, {reps: req.params.reps, sets: req.params.sets}, (err, workout)=>{
-        if (err) throw err;
-
-        console.log(workout);
-    })
-});
-
-app.delete('/delete/:name', (req, res) => {
-    Workout.findOneAndDelete({"name": req.param.name}, (err)=>{
-        if(err){
-            console.log(err);
-        } else {
-            res.send('user deleted');
-        }
-    })
+app.put('/edit/:name', (req, res) => {
+    res.send('put request')
 });
 
 }
