@@ -461,5 +461,18 @@ input:focus {
     margin: 0px;
     text-align: center;
   }
+  .card-title a{
+    color: #E4EBF1;
+  }
+  .editbutton {
+    display: inline;
+    margin-left: 14%;
+  }
+  .edit-workout-buttons {
+    width: 90%;
+    /* margin-top: 55px; */
+    display: block;
+    margin: 55px auto;
+  }
 }
 

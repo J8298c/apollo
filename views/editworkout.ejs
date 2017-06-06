@@ -1,0 +1,30 @@
+<% include partials/head %>
+<body>
+    <div class="workout-edit-name">
+        <h5><%=name %></h5>
+    </div>
+    <div class="workout-edit-reps">
+        <h5><%=reps %></h5>
+    </div>
+    <div class="workout-edit-sets">
+        <h5><%=sets %></h5>
+    </div>
+    <h5>Edit Your Workout</h5>
+    <hr>
+    <form action="/edit" method="put" class="edit-form">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" name="name" value=<%= name %> disabled>
+        </div>
+        <div>
+            <label for="reps">Reps</label>
+            <input type="text" name="reps">
+        </div>
+        <div>
+            <label for="sets">Sets</label>
+            <input type="text" name="sets">
+        </div>
+        <button class="mdl-button mdl-js-button mdl-button--raised app-button startbutton editbutton">Save</button>
+    </form>
+</body>
+<% include partials/footer %>
