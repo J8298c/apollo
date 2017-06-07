@@ -66,7 +66,7 @@ app.get('/workout/:name', (req, res, next) => {
     })
 });
 //edit workouts
-app.get('/edit/:name', (req, res) => {
+app.get('/edit/workout/:name', (req, res) => {
     Workout.findOne({
         name: req.params.name
     }, (err, workout) => {
@@ -82,7 +82,27 @@ app.get('/edit/:name', (req, res) => {
     })
 });
 app.put('/edit/:name', (req, res) => {
-    res.send('put request')
+    console.log(req.body)
+    res.render('workout', {name: req.params.name, reps: req.body.reps, sets: req.body.sets});
+    Workout.findOneAndUpdate({'name': req.params.name}, {$set:{reps: req.body.reps, sets: req.body.sets}}, {new: true, upsert:true}, (err, workout)=>{
+        if(err) {
+            return handleError(err)
+        }else{
+            console.log(workout);
+        }
+    });
 });
+
+app.delete('/delete/:name', (req, res)=>{
+    console.log(req.params);
+    Workout.findOneAndRemove({name: req.params.name}, (err, workout)=>{
+        if(err){
+            console.log(err);
+        } else {
+            console.log('workout is deleted');
+            res.redirect('/all')
+        }
+    })
+})
 
 }

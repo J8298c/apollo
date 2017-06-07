@@ -11,8 +11,10 @@
             <h6>Workouts Sets: <%=sets%></h6>
         </div>
     </div>
-     <button class="mdl-button mdl-js-button mdl-button--raised app-button loginbutton"><a href=<%="/edit/"+name%>>Edit</a></button>
-     <button class="mdl-button mdl-js-button mdl-button--raised app-button loginbutton"><a href=<%="/delete/"+name%>>Edit</a></button>
+     <button class="mdl-button mdl-js-button mdl-button--raised app-button loginbutton"><a href=<%="/edit/workout/"+name%>>Edit</a></button>
+     <form method="POST" action=<%="/delete/"+name+"?_method=DELETE"%>> 
+     <button class="mdl-button mdl-js-button mdl-button--raised app-button loginbutton">Delete</button>
+     </form>
 </body>
 
 <% include partials/footer %>
