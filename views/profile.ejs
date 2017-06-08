@@ -14,9 +14,12 @@
         <!--graph area for user activity -->
     </main>
     <div class="navigation-buttons">
-    <button class="mdl-button mdl-js-button mdl-button--raised app-button workoutout-start logout"><a href="/all" class="logout-link">Workout</a></button>
-     <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent app-button logout"><a href="/logout" class="logout-link">Logout</a></button>
+        <button class="mdl-button mdl-js-button mdl-button--raised app-button workoutout-start logout"><a href="/all" class="logout-link">Workout</a></button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent app-button logout"><a href="/logout" class="logout-link">Logout</a></button>
      </div>
+     <form method="POST" action=<%="/delete/" + user + "?_method=DELETE"%>> 
+        <button class="mdl-button mdl-js-button mdl-button--raised app-button loginbutton">Delete</button>
+     </form>
 </body>
 
 <% include partials/footer %>

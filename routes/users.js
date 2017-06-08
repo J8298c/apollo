@@ -28,8 +28,12 @@ module.exports = (app, passport, User)=>{
     failureRedirect   :   '/users/signup',
     failureFlash      : true
   }));
-}
 
+  app.delete('/users/delete/:user', (req, res)=>{
+    console.log(req.params)
+  })
+}
+  
 function isLoggedIn(req, res, next){
   if(req.isAuthenticated()){
     return next();
