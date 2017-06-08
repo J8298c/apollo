@@ -1,30 +1,31 @@
 <% include partials/head %>
-<body>
-    <div class="workout-edit-name">
-        <h5><%=name %></h5>
+<body class="workout-page">
+    <div class="workout-edit-name workout-title-div">
+        <h1 class="workout-title"><%=name %></h1>
     </div>
     <div class="workout-edit-reps">
-        <h5><%=reps %></h5>
+        <h5>Reps: <%=reps %></h5>
     </div>
     <div class="workout-edit-sets">
-        <h5><%=sets %></h5>
+        <h5>Sets: <%=sets %></h5>
     </div>
-    <h5>Edit Your Workout</h5>
+    <h5 class="center">Edit Your Workout Below</h5>
     <hr>
     <form  method="POST" class="edit-form" action=<%="/edit/" + name +  "?_method=PUT"%>>
-        <div>
-            <label for="name">Name</label>
+        <div class="edit-workouts">
+            <label class="labels" for="name">Name</label>
             <input type="text" name="name" value=<%= name %> disabled>
         </div>
-        <div>
-            <label for="reps">Reps</label>
+        <div class="edit-workouts">
+            <label class="labels" for="reps">Reps</label>
             <input type="text" name="reps">
         </div>
-        <div>
-            <label for="sets">Sets</label>
+        <div class="edit-workouts">
+            <label class="labels" for="sets">Sets</label>
             <input type="text" name="sets">
         </div>
         <button type="submit" class="mdl-button mdl-js-button mdl-button--raised app-button startbutton editbutton">Save</button>
     </form>
+     <p clas="links">To go back to all the workouts click <a class="links" href="/all">here</a></p>
 </body>
 <% include partials/footer %>

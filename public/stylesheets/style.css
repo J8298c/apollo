@@ -4,6 +4,15 @@ body {
   background-color: #313E52 ;
   color: #E4EBF1;
 }
+a {
+  text-decoration: none;
+  color: #E4EBF1;
+}
+.navigation-buttons {
+    width: 55%;
+    display: block;
+    margin: 0 auto;
+}
 #landing-page {
   background: linear-gradient(0deg,rgba(49, 62, 82, 0.9),rgba(49, 62, 82, 0.9)), url('../images/brooklyn_bridge.jpg');
   background-repeat: none;
@@ -133,6 +142,13 @@ h5.app-description {
   color: #D7DEE4;
   font-size: 18px;
   }
+  .workout-page-cat {
+    width: 48%;
+    display: inline;
+    float: left;
+    text-align: center;
+    margin-bottom: 100px;
+}
   .loginbutton,
   #signupbutton {
     display: block;
@@ -150,7 +166,103 @@ input:focus {
   margin-top: 71px;
   font-size: 18px;
 }
-
+ .profile-header{
+  background-color: rgba(53, 47, 74 .3);
+   width: 100%;
+   height: 200px;
+ }
+ .profile-img {
+    height: 200px;
+    width: 200px;
+    display: block;
+    margin: 26px auto;
+    margin-top: -83px;
+    /* border-radius: 50%; */
+}
+ .username-profile {
+    width: 50%;
+    display: block;
+    font-size: 12px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #26D583;
+    color: #313E52;
+}
+.user-stats-grid{
+  width: 100%;
+}
+.user-stat-div {
+    width: 78%;
+    /* margin-left: 2px; */
+    display: block;
+    margin: 0 auto;
+}
+.logout {
+    width: 49%;
+}
+.border-sides {
+    border-left: 1px solid #D7DEE4;
+    border-right: 1px solid #D7DEE4;
+}
+.mdl-cell.mdl-cell--4-col-phone.user-stats {
+    width: 31%;
+    text-align: center;
+    background-color: rgba(206, 212, 216, 0.3);
+    margin-right: 0px;
+    margin-left: 0px;
+}
+    .workout-card {
+    width: 44%;
+    display: inline;
+    margin-top: 39px;
+    border: 1px solid;
+    background-color: #26D583;
+    }
+    .card-image {
+    width: 45%;
+    /* margin: 0px; */
+    padding: 0px;
+    display: block;
+    margin: 0 auto;
+  }
+  img.workout-div-img {
+    width: 100%;
+  }
+  .card-title {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+  .card-title h6 {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+  }
+  .card-title a{
+    color: #E4EBF1;
+  }
+  .mdl-grid {
+    padding: 12px;
+    margin-left: 7%;
+}
+h1.workout-title {
+    font-size: 50px;
+    text-align: center;
+    color: #E4EBF1;
+    }
+    .workout-title-div{
+      background-color: #26D583;
+    }
+    a.nodecoration {
+    text-decoration: none;
+    }
+    h1.workout-title {
+    font-size: 50px;
+    text-align: center;
+    color: #E4EBF1;
+    margin-top: 0px;
+    }
 .signup-page{
   width: 100%;
   background:linear-gradient(0deg,rgba(49, 62, 82, 0.9),rgba(49, 62, 82, 0.9)), url('../images/signup.jpg') center center no-repeat;
@@ -162,7 +274,36 @@ input:focus {
   height: 170px;
   width: 100%;
 }
-
+.center{
+  text-align: center;
+}
+.labels{
+  font-size: 22px;
+}
+.edit-workouts input[type="text"] {
+    width: 86%;
+    margin-top: 13px;
+    margin-bottom: 12px;
+    margin-left: 15px;
+    border-radius: 4px;
+    height: 25px;
+    background: rgba(206, 212, 216, 0.3);
+    border: 1px solid #D7DEE4;
+    color: #D7DEE4;
+    font-size: 16px;
+}
+button.editbutton {
+    width: 35%;
+    display: block;
+    margin: 24px auto;
+}
+.links{
+  text-align: center
+}
+.links a {
+    text-decoration: none;
+    color: rgb(255,64,129);
+}
 @media only screen and (max-width: 800px) and (min-width: 300px)  {
   #landing-page h1 {
     text-align: center;
@@ -352,7 +493,6 @@ input:focus {
 .logout {
     margin-left: 15%;
 }
-
  .track {
     width: 87px;
     font-size: 12px;
@@ -361,7 +501,6 @@ input:focus {
     display: block;
     margin: 0 auto;
 }
-
   .workout {
     width: 25%;
     margin-left: 24px;
@@ -473,6 +612,20 @@ input:focus {
     /* margin-top: 55px; */
     display: block;
     margin: 55px auto;
+  }
+  .navigation-buttons {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+  .user-stat-div {
+    width: 84%;
+    margin-left: 0px;
+    display: block;
+    /* margin: 0 auto; */
+}
+.logout {
+    width: 28%;
   }
 }
 
