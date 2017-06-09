@@ -13,6 +13,7 @@ const mongoose = require('mongoose');
 const User = require('./models/usermodel');
 const {Workout} = require('./models/workoutmodel');
 const {HeroWod} = require('./models/workoutmodel');
+var methodOverride  = require("method-override");
 const app = express();
 // mongoose.connect(process.env.DB_TEST_URL);
 mongoose.connect(process.env.DB_URL);
@@ -25,6 +26,7 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(methodOverride('_method'))
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
