@@ -100,7 +100,7 @@ describe('Testing Api endpoints', ()=>{
                 return count;
             })
             let res;
-            chai.request('http://localhost:8081')
+            chai.request(app)
                 .post('/signup', {email: faker.name.findName(), password: faker.lorem.word()})
                 .then(_res =>{
                     res = _res;
