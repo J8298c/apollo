@@ -1,0 +1,9 @@
+<% include partials/head %>
+<h2 class="log-title">Log your <%=name %></h2>
+<form id="logworkout">
+    <% for(let i = 0; i < sets; i++) { %>
+      <input type="text" class="loginput" id=<%= "logging"+i %> placeholder="log your workout reps" />
+   <% } %>
+   <button class="log-submit mdl-button mdl-js-button mdl-button--raised app-button loginbutton">Submit</button>
+</form>
+<% include partials/footer %>

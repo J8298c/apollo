@@ -113,4 +113,22 @@ app.delete('/delete/:name', (req, res)=>{
     })
 })
 
+//logging workouts
+
+app.get('/log/:name', (req, res)=>{
+    console.log(req.params);
+    Workout.findOne({
+        name: req.params.name
+    }, (err, workout)=>{
+        if(err){
+            console.log(err);
+        } else {
+            res.render('log', {
+                name: workout.name,
+                sets: workout.sets
+            })
+        }
+    })
+});
+
 }

@@ -304,6 +304,23 @@ button.editbutton {
     text-decoration: none;
     color: rgb(255,64,129);
 }
+form#logworkout {
+    width: 75%;
+    display: block;
+    margin: 24px auto;
+}
+h2.log-title {
+    text-align: center;
+}
+.loginput {
+    width: 45%;
+    display: block;
+    margin: 30px auto;
+    height: 44px;
+    border: 1px solid;
+    border-radius: 7px;
+    font-size: 20px;
+}
 @media only screen and (max-width: 800px) and (min-width: 300px)  {
   #landing-page h1 {
     text-align: center;
@@ -626,6 +643,18 @@ button.editbutton {
 }
 .logout {
     width: 28%;
+  }
+  button.log-submit {
+    width: 51%;
+  }
+  .loginput {
+    width: 98%;
+    display: block;
+    margin: 30px auto;
+    height: 44px;
+    border: 1px solid;
+    border-radius: 7px;
+    font-size: 18px;
   }
 }
 
